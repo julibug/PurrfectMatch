@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using Microsoft.Extensions.Hosting;
 using PurrfectMatch.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PurrfectMatch.Controllers
 {
@@ -23,34 +24,31 @@ namespace PurrfectMatch.Controllers
         }
 
         // Akcja dodawania kota
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
-        public async Task<IActionResult> Create(Cat cat, IFormFile imageFile) // imageFile to plik przesłany przez użytkownika
+        public async Task<IActionResult> Create(Cat cat, IFormFile imageFile)
         {
             if (ModelState.IsValid)
             {
                 // Obsługa przesyłania zdjęcia
                 if (imageFile != null && imageFile.Length > 0)
                 {
-                    // Generowanie ścieżki, w której zapisujemy plik
                     var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", imageFile.FileName);
-
-                    // Zapisz plik na serwerze
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         await imageFile.CopyToAsync(fileStream);
                     }
 
-                    // Przypisz ścieżkę do zdjęcia w modelu kota
                     cat.ImageUrl = "/images/" + imageFile.FileName;
                 }
 
-                // Zapisz kota do bazy danych
                 _context.Cats.Add(cat);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index)); // Po dodaniu przekieruj na listę kotów
@@ -59,7 +57,69 @@ namespace PurrfectMatch.Controllers
             return View(cat);
         }
 
-        // Akcja, która wyświetla listę kotów
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var cat = _context.Cats.FirstOrDefault(c => c.Id == id);
+            if (cat == null)
+            {
+                return NotFound();
+            }
+            return View(cat);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Cat cat)
+        {
+            if (id != cat.Id)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(cat);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(cat);
+        }
+
+        // Akcja, która wyświetla formularz potwierdzenia usunięcia kota
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var cat = _context.Cats.FirstOrDefault(c => c.Id == id);
+            if (cat == null)
+            {
+                return NotFound();
+            }
+
+            return View(cat);  // Zwracamy widok, aby użytkownik mógł potwierdzić usunięcie
+        }
+
+        // Akcja, która faktycznie usuwa kota z bazy danych
+        [Authorize(Roles = "Administrator")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var cat = await _context.Cats.FindAsync(id);
+            if (cat == null)
+            {
+                return NotFound();
+            }
+
+            _context.Cats.Remove(cat);  // Usuwamy kota
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));  // Po usunięciu przekierowujemy na stronę z listą kotów
+        }
+
+        // Akcja wyświetlająca listę kotów
         public IActionResult Index()
         {
             var cats = _context.Cats.ToList(); // Pobieramy wszystkich kotów z bazy danych

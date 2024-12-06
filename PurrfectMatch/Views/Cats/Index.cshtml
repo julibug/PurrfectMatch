@@ -17,8 +17,22 @@
                     <p class="card-text">@cat.Description</p>
                     <p><strong>Status:</strong> @(cat.IsAvailable ? "Dostępny" : "Niedostępny")</p>
                     <a href="@Url.Action("Details", "Cats", new { id = cat.Id })" class="btn btn-primary">Zobacz szczegóły</a>
+
+                    @* Opcje edytowania i usuwania dostępne tylko dla administratora *@
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <a href="@Url.Action("Edit", "Cats", new { id = cat.Id })" class="btn btn-warning">Edytuj</a>
+                        <a href="@Url.Action("Delete", "Cats", new { id = cat.Id })" class="btn btn-danger">Usuń</a>
+                    }
                 </div>
             </div>
         </div>
     }
 </div>
+
+@if (User.IsInRole("Administrator"))
+{
+    <p>
+        <a href="@Url.Action("Create", "Cats")" class="btn btn-primary">Dodaj nowego kota</a>
+    </p>
+}

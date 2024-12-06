@@ -33,30 +33,26 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-    // Sprawdzenie, czy istnieje jakikolwiek u¿ytkownik w bazie danych
-    var user = await userManager.FindByEmailAsync("test@test.com");
-    if (user == null)
+    var roleExist = await roleManager.RoleExistsAsync("Administrator");
+    if (!roleExist)
     {
-        // Jeœli u¿ytkownik nie istnieje, utwórz nowego
-        user = new ApplicationUser { UserName = "test@test.com", Email = "test@test.com" };
-        var result = await userManager.CreateAsync(user, "Test@123");
+        var role = new IdentityRole("Administrator");
+        await roleManager.CreateAsync(role); // Tworzymy rolê
+    }
 
-        if (result.Succeeded)
+    // Dodajemy administratora, jeœli go nie ma
+    var adminUser = await userManager.FindByEmailAsync("admin@admin.com");
+    if (adminUser == null)
+    {
+        adminUser = new ApplicationUser { UserName = "admin@admin.com", Email = "admin@admin.com" };
+        var createAdminResult = await userManager.CreateAsync(adminUser, "AdminPassword123!");
+        if (createAdminResult.Succeeded)
         {
-            // Jeœli u¿ytkownik zosta³ utworzony, przypisz rolê (jeœli potrzebujesz)
-            // var roleResult = await roleManager.CreateAsync(new IdentityRole("User"));
-            // if (roleResult.Succeeded)
-            // {
-            //     await userManager.AddToRoleAsync(user, "User");
-            // }
-            Console.WriteLine("Test user created successfully!");
-        }
-        else
-        {
-            Console.WriteLine("Error creating test user: " + string.Join(", ", result.Errors.Select(e => e.Description)));
+            await userManager.AddToRoleAsync(adminUser, "Administrator"); // Przypisujemy rolê administratora
         }
     }
 }
@@ -72,6 +68,6 @@ app.UseAuthorization();
 // Zmiana domyœlnej œcie¿ki na rejestracjê
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Cats}/{action=Index}/{id?}"); // Zmieniamy domyœlny kontroler i akcjê na rejestracjê
+    pattern: "{controller=Account}/{action=Login}/{id?}"); // Zmieniamy domyœlny kontroler i akcjê na rejestracjê
 
 app.Run();

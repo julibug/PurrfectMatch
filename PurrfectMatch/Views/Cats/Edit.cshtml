@@ -1,0 +1,43 @@
+﻿@model PurrfectMatch.Models.Cat
+
+@{
+    ViewBag.Title = "Edytuj kota";
+}
+
+<h2>Edytuj kota</h2>
+
+@using (Html.BeginForm("Edit", "Cats", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description)
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Description)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Age)
+        @Html.TextBoxFor(model => model.Age, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(model => model.Age)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsAvailable)
+        @Html.CheckBoxFor(model => model.IsAvailable, new { @class = "form-check-input" })
+        @Html.ValidationMessageFor(model => model.IsAvailable)
+    </div>
+
+    <div class="form-group">
+        <label for="imageFile">Zdjęcie kota</label>
+        <input type="file" id="imageFile" name="imageFile" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+}

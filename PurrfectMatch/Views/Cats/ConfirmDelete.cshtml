@@ -1,0 +1,26 @@
+﻿@model PurrfectMatch.Models.Cat
+
+@{
+    ViewBag.Title = "Potwierdzenie usunięcia";
+}
+
+<h2>Potwierdzenie usunięcia</h2>
+
+<div class="alert alert-warning">
+    <strong>Uwaga!</strong> Czy na pewno chcesz usunąć kota "<strong>@Model.Name</strong>"?
+</div>
+
+<!-- Wyświetlanie szczegółów kota -->
+<div>
+    <p><strong>Opis:</strong> @Model.Description</p>
+    <p><strong>Status:</strong> @(Model.IsAvailable ? "Dostępny" : "Niedostępny")</p>
+</div>
+
+<!-- Formularz do potwierdzenia usunięcia -->
+<form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Tak, usuń</button>
+</form>
+
+<!-- Link do powrotu bez usuwania -->
+<a href="@Url.Action("Index", "Cats")" class="btn btn-secondary">Nie, wróć</a>

@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\540cc43d747cb_o_original.jpg",
+      "PackagePath": "staticwebassets\\images\\540cc43d747cb_o_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\śpiący-kot.jpg",
+      "PackagePath": "staticwebassets\\images\\śpiący-kot.jpg"
+    },
+    {
       "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
