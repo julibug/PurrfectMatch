@@ -31,24 +31,19 @@ namespace PurrfectMatch.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // Dodaj Console.WriteLine tutaj, aby sprawdzić, czy rejestracja przebiegła pomyślnie
-                    Console.WriteLine("Registration Successful");
-
-                    // Zalogowanie użytkownika po rejestracji
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-
-                    // Przekierowanie na stronę z kotami po rejestracji
-                    return RedirectToAction("Index", "Cats");
+                    // Po rejestracji, przekierowanie do strony logowania
+                    return RedirectToAction("Login", "Account");
                 }
 
-                // Obsługa błędów, jeśli rejestracja się nie udała
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+
             return View(model);
         }
+
         public IActionResult Login()
         {
             return View();

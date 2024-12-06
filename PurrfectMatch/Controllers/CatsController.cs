@@ -19,5 +19,15 @@ namespace PurrfectMatch.Controllers
             var cats = _context.Cats.ToList(); // Pobieramy wszystkich kotów z bazy danych
             return View(cats); // Zwracamy widok z listą kotów
         }
+
+        public IActionResult Details(int id)
+        {
+            var cat = _context.Cats.FirstOrDefault(c => c.Id == id);
+            if (cat == null)
+            {
+                return NotFound();
+            }
+            return View(cat);
+        }
     }
 }

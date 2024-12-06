@@ -1,62 +1,24 @@
 ﻿@model IEnumerable<PurrfectMatch.Models.Cat>
 
-<h1>Lista kotów do adopcji</h1>
+@{
+    ViewBag.Title = "Lista kotów";
+}
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Zdjęcie</th>
-            <th>Imię</th>
-            <th>Wiek</th>
-            <th>Opis</th>
-            <th>Choroby</th>
-            <th>Adopcja</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var cat in Model)
-        {
-            <tr>
-                <!-- Wyświetlanie obrazu -->
-                <td>
-                    @if (!string.IsNullOrEmpty(cat.ImageUrl))
-                    {
-                        <img src="@cat.ImageUrl" alt="Zdjęcie kota @cat.Name" style="width: 100px; height: auto;" />
-                    }
-                    else
-                    {
-                        <span>Brak zdjęcia</span>
-                    }
-                </td>
-                <!-- Wyświetlanie imienia -->
-                <td>@cat.Name</td>
-                <!-- Wyświetlanie wieku -->
-                <td>@cat.Age lat</td>
-                <!-- Wyświetlanie opisu -->
-                <td>@cat.Description</td>
-                <!-- Wyświetlanie chorób -->
-                <td>
-                    @if (!string.IsNullOrEmpty(cat.Diseases))
-                    {
-                        @cat.Diseases
-                    }
-                    else
-                    {
-                        <span>Brak informacji</span>
-                    }
-                </td>
-                <!-- Wyświetlanie statusu dostępności -->
-                <td>
-                    @if (cat.IsAvailable)
-                    {
-                        <span style="color: green;">Kotek szuka domu!</span>
-                    }
-                    else
-                    {
-                        <span style="color: red;">Kotek jest zarezerwowany :)</span>
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<h2>Lista kotów</h2>
+
+<div class="row">
+    @foreach (var cat in Model)
+    {
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="@cat.ImageUrl" class="card-img-top" alt="@cat.Name" />
+                <div class="card-body">
+                    <h5 class="card-title">@cat.Name</h5>
+                    <p class="card-text">@cat.Description</p>
+                    <p><strong>Status:</strong> @(cat.IsAvailable ? "Dostępny" : "Niedostępny")</p>
+                    <a href="@Url.Action("Details", "Cats", new { id = cat.Id })" class="btn btn-primary">Zobacz szczegóły</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,19 @@
+﻿@model PurrfectMatch.Models.Cat
+
+@{
+    ViewBag.Title = "Szczegóły kota";
+}
+
+<h2>Szczegóły kota: @Model.Name</h2>
+
+<div class="card" style="width: 18rem;">
+    <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name" />
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        <p><strong>Wiek:</strong> @Model.Age</p>
+        <p><strong>Status:</strong> @(Model.IsAvailable ? "Dostępny" : "Niedostępny")</p>
+    </div>
+</div>
+
+<a href="@Url.Action("Index", "Cats")" class="btn btn-secondary">Powrót do listy</a>
