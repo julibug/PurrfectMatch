@@ -10,7 +10,7 @@
             <th>Wiek</th>
             <th>Opis</th>
             <th>Choroby</th>
-            <th>Dostępny</th>
+            <th>Adopcja</th>
         </tr>
     </thead>
     <tbody>
@@ -49,11 +49,11 @@
                 <td>
                     @if (cat.IsAvailable)
                     {
-                        <span style="color: green;">Dostępny</span>
+                        <span style="color: green;">Kotek szuka domu!</span>
                     }
                     else
                     {
-                        <span style="color: red;">Niedostępny</span>
+                        <span style="color: red;">Kotek jest zarezerwowany :)</span>
                     }
                 </td>
             </tr>
