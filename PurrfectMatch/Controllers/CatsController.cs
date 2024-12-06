@@ -13,10 +13,11 @@ namespace PurrfectMatch.Controllers
             _context = context;
         }
 
+        // Akcja, która wyświetla listę kotów
         public IActionResult Index()
         {
-            var cats = _context.Cats.ToList();
-            return View(cats); // Przekaż dane do widoku
+            var cats = _context.Cats.ToList(); // Pobieramy wszystkich kotów z bazy danych
+            return View(cats); // Zwracamy widok z listą kotów
         }
     }
 }

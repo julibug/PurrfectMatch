@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/julia/Documents/GitHub/PurrfectMatch/PurrfectMatch/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/julia/Documents/GitHub/PurrfectMatch/PurrfectMatch/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/julia/Documents/GitHub/PurrfectMatch/PurrfectMatch/Views/Cats/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
