@@ -1,27 +1,38 @@
+using Microsoft.EntityFrameworkCore;
+using PurrfectMatch.Data;
+using PurrfectMatch.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDbContext<CatDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    var dbContext = scope.ServiceProvider.GetRequiredService<CatDbContext>();
+
+    if (!dbContext.Cats.Any()) // Jeœli tabela jest pusta
+    {
+        dbContext.Cats.AddRange(new List<Cat>
+        {
+            new Cat { Name = "Mruczek", Age = 2, Description = "Uroczy kot", IsAvailable = true },
+            new Cat { Name = "Feliks", Age = 5, Description = "Kot o smuk³ej sylwetce", IsAvailable = false }
+        });
+        dbContext.SaveChanges(); // Zapisz zmiany do bazy danych
+    }
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Cats}/{action=Index}/{id?}");
 
 app.Run();

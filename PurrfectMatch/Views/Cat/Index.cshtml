@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PurrfectMatch.Models.Cat>
+
+<h1>Lista kotów do adopcji</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Zdjęcie</th>
+            <th>Imię</th>
+            <th>Wiek</th>
+            <th>Opis</th>
+            <th>Choroby</th>
+            <th>Dostępny</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cat in Model)
+        {
+            <tr>
+                <!-- Wyświetlanie obrazu -->
+                <td>
+                    @if (!string.IsNullOrEmpty(cat.ImageUrl))
+                    {
+                        <img src="@cat.ImageUrl" alt="Zdjęcie kota @cat.Name" style="width: 100px; height: auto;" />
+                    }
+                    else
+                    {
+                        <span>Brak zdjęcia</span>
+                    }
+                </td>
+                <!-- Wyświetlanie imienia -->
+                <td>@cat.Name</td>
+                <!-- Wyświetlanie wieku -->
+                <td>@cat.Age lat</td>
+                <!-- Wyświetlanie opisu -->
+                <td>@cat.Description</td>
+                <!-- Wyświetlanie chorób -->
+                <td>
+                    @if (!string.IsNullOrEmpty(cat.Diseases))
+                    {
+                        @cat.Diseases
+                    }
+                    else
+                    {
+                        <span>Brak informacji</span>
+                    }
+                </td>
+                <!-- Wyświetlanie statusu dostępności -->
+                <td>
+                    @if (cat.IsAvailable)
+                    {
+                        <span style="color: green;">Dostępny</span>
+                    }
+                    else
+                    {
+                        <span style="color: red;">Niedostępny</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
