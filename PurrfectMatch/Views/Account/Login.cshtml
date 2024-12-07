@@ -1,25 +1,29 @@
 ﻿@model PurrfectMatch.Models.LoginViewModel
 
-<h2>Login</h2>
+<h2 class="mb-4">Logowanie</h2>
 
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email)
+    <div class="form-group mb-2">
+        @Html.LabelFor(m => m.Email, "E-mail", new { @class = "form-label" })
         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Email)
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password)
+    <div class="form-group mb-2">
+        @Html.LabelFor(m => m.Password, "Hasło", new { @class = "form-label" })
         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Password)
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary mt-3">Zaloguj</button>
 }
+
+<p class="mt-1">
+    <a href="@Url.Action("Register", "Account")">Nie masz konta? Zarejestruj się!</a>
+</p>
 
 <!-- Wyświetlanie błędów -->
 @if (!ViewData.ModelState.IsValid)

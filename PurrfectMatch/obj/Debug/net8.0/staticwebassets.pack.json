@@ -21,6 +21,18 @@
       "PackagePath": "staticwebassets\\images\\Cute-Cat-icon.png"
     },
     {
+      "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\founder1.JPEG",
+      "PackagePath": "staticwebassets\\images\\founder1.JPEG"
+    },
+    {
+      "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\founder2.JPEG",
+      "PackagePath": "staticwebassets\\images\\founder2.JPEG"
+    },
+    {
+      "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\founder3.JPEG",
+      "PackagePath": "staticwebassets\\images\\founder3.JPEG"
+    },
+    {
       "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\śpiący-kot.jpg",
       "PackagePath": "staticwebassets\\images\\śpiący-kot.jpg"
     },

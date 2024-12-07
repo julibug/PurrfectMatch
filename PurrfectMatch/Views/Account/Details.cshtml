@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PurrfectMatch.Models
+
+@{
+    var userManager = Context.RequestServices.GetService<UserManager<ApplicationUser>>();
+    var signInManager = Context.RequestServices.GetService<SignInManager<ApplicationUser>>();
+}
+
+<h2>Welcome, @User.Identity.Name</h2>
+
+<p>
+    <strong>Username:</strong> @User.Identity.Name
+</p>
+
+<p>
+    <strong>Email:</strong> @User.Identity.Name
+</p>
+
+<!-- Przycisk wylogowania -->
+<form asp-controller="Account" asp-action="Logout" method="post">
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>

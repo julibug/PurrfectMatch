@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PurrfectMatch.Models;
 using System.Threading.Tasks;
@@ -23,16 +24,23 @@ namespace PurrfectMatch.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
-                    // Po rejestracji, przekierowanie do strony logowania
-                    return RedirectToAction("Login", "Account");
+                    // Zalogowanie użytkownika po rejestracji
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home"); // Przekierowanie na stronę główną po rejestracji
                 }
 
                 foreach (var error in result.Errors)
@@ -40,7 +48,6 @@ namespace PurrfectMatch.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
             return View(model);
         }
 
@@ -88,7 +95,17 @@ namespace PurrfectMatch.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Cats");
+        }
+        [Authorize]
+        public IActionResult Details()
+        {
+            // Pobranie informacji o aktualnym użytkowniku
+            var userName = User.Identity.Name; // Nazwa użytkownika
+            var userClaims = User.Claims.Select(c => new { c.Type, c.Value }).ToList(); // Wszystkie dane z claimów
+
+            // Przekazanie danych do widoku
+            return View(userClaims);
         }
     }
 }

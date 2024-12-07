@@ -21,3 +21,37 @@ body {
     background-color: pink;
     color: #000;
 }
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Zawijanie elementów na ma³ych ekranach */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px; /* Dodanie marginesu górnego do kart */
+}
+
+/* Alternatywnie, mo¿esz dodaæ margines do .col-md-4, aby przesun¹æ ca³¹ kolumnê */
+.col-md-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px; /* Dodanie marginesu górnego do kolumn */
+}
+
+/* Stylizacja dla obrazka, aby by³ w pe³ni wyœrodkowany */
+.card img {
+    width: 150px; /* Mo¿esz dostosowaæ szerokoœæ */
+    height: 150px; /* Mo¿esz dostosowaæ wysokoœæ */
+    object-fit: cover; /* Dopasowanie obrazka do kontenera */
+    margin: 0 auto; /* Wyœrodkowanie obrazka w kolumnie */
+    margin-top: 10px;
+}
