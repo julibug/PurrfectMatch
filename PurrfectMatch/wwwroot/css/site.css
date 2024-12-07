@@ -18,5 +18,6 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: pink;
+    color: #000;
 }

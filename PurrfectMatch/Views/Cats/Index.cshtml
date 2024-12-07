@@ -6,22 +6,33 @@
 
 <h2>Lista kotów</h2>
 
-<div class="row">
+@if (User.IsInRole("Administrator"))
+{
+    <div class="mb-4">
+        <a href="@Url.Action("Create", "Cats")" class="btn btn-primary">Dodaj nowego kota</a>
+    </div>
+}
+
+<div class="container">
     @foreach (var cat in Model)
     {
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img src="@cat.ImageUrl" class="card-img-top" alt="@cat.Name" />
-                <div class="card-body">
-                    <h5 class="card-title">@cat.Name</h5>
-                    <p class="card-text">@cat.Description</p>
-                    <p><strong>Status:</strong> @(cat.IsAvailable ? "Dostępny" : "Niedostępny")</p>
-                    <a href="@Url.Action("Details", "Cats", new { id = cat.Id })" class="btn btn-primary">Zobacz szczegóły</a>
+        <div class="row mb-4 align-items-center border-bottom pb-3">
+            <!-- Zdjęcie kota -->
+            <div class="col-md-4 text-center">
+                <img src="@cat.ImageUrl" class="img-fluid rounded" alt="@cat.Name" style="max-height: 200px; object-fit: cover;" />
+            </div>
 
-                    @* Opcje edytowania i usuwania dostępne tylko dla administratora *@
+            <!-- Dane kota -->
+            <div class="col-md-8">
+                <h4>@cat.Name</h4>
+                <p>@cat.Description</p>
+                <p><strong>Status:</strong> @(cat.IsAvailable ? "Dostępny" : "Niedostępny")</p>
+                <div class="btn-group" role="group">
+                    <a href="@Url.Action("Details", "Cats", new { id = cat.Id })" class="btn btn-primary me-2">Zobacz szczegóły</a>
+
                     @if (User.IsInRole("Administrator"))
                     {
-                        <a href="@Url.Action("Edit", "Cats", new { id = cat.Id })" class="btn btn-warning">Edytuj</a>
+                        <a href="@Url.Action("Edit", "Cats", new { id = cat.Id })" class="btn btn-warning me-2">Edytuj</a>
                         <a href="@Url.Action("Delete", "Cats", new { id = cat.Id })" class="btn btn-danger">Usuń</a>
                     }
                 </div>
@@ -29,10 +40,3 @@
         </div>
     }
 </div>
-
-@if (User.IsInRole("Administrator"))
-{
-    <p>
-        <a href="@Url.Action("Create", "Cats")" class="btn btn-primary">Dodaj nowego kota</a>
-    </p>
-}
