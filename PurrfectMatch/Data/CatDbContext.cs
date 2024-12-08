@@ -10,5 +10,6 @@ namespace PurrfectMatch.Data
         }
 
         public DbSet<Cat> Cats { get; set; }
+        public DbSet<AdoptionRequest> AdoptionRequests { get; set; }
     }
 }
