@@ -70,7 +70,7 @@ using (var scope = app.Services.CreateScope())
         context.AdoptionRequests.AddRange(
             new AdoptionRequest
             {
-                UserId = 1,
+                UserId = "1",
                 CatId = 1,
                 HasOtherAnimals = true,
                 HasChildren = false,
@@ -78,7 +78,7 @@ using (var scope = app.Services.CreateScope())
             },
             new AdoptionRequest
             {
-                UserId = 2,
+                UserId = "2",
                 CatId = 2,
                 HasOtherAnimals = false,
                 HasChildren = true,
@@ -86,7 +86,7 @@ using (var scope = app.Services.CreateScope())
             },
             new AdoptionRequest
             {
-                UserId = 3,
+                UserId = "3",
                 CatId = 3,
                 HasOtherAnimals = true,
                 HasChildren = true,
