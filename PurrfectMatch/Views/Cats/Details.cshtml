@@ -21,8 +21,11 @@
 
 <a href="@Url.Action("Index", "Cats")" class="btn btn-secondary">Powrót do listy</a>
 
-<a href="@Url.Action("RequestAdoption", "Adoption", new { catId = Model.Id })"
-   class="btn btn-primary @(!Model.IsAvailable ? "disabled" : "")"
-@(Model.IsAvailable ? "" : "disabled")>
-    @(Model.IsAvailable ? "Zgłoś adopcję" : "Kotek zarezerwowany")
-</a>
+@if (!User.IsInRole("Administrator"))
+{
+    <!-- Jeżeli kot jest dostępny i użytkownik nie jest administratorem, przycisk jest widoczny -->
+    <a href="@Url.Action("RequestAdoption", "Adoption", new { catId = Model.Id })"
+       class="btn btn-primary @(Model.IsAvailable ? "" : "disabled")">
+        @(Model.IsAvailable ? "Zgłoś adopcję" : "Kotek zarezerwowany")
+    </a>
+}
