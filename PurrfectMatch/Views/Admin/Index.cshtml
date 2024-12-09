@@ -11,6 +11,7 @@
             <th>Czy ma inne zwierzęta</th>
             <th>Czy ma dzieci</th>
             <th>Typ mieszkania</th>
+            <th>Akcje</th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +24,32 @@
                 <td>@(request.HasOtherAnimals ? "Tak" : "Nie")</td>
                 <td>@(request.HasChildren ? "Tak" : "Nie")</td>
                 <td>@(request.Housing ? "Dom" : "Mieszkanie")</td>
+                <td>
+                    <form asp-action="ApproveRequest" asp-controller="Admin" method="post" style="display:inline;">
+                        <input type="hidden" name="requestId" value="@request.RequestId" />
+                        <input type="hidden" name="catId" value="@request.CatId" />
+                        <button type="submit" class="btn btn-success btn-sm">Akceptuj</button>
+                    </form>
+                    <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
+                        <input type="hidden" name="requestId" value="@request.RequestId" />
+                        <button type="submit" class="btn btn-danger btn-sm">Odrzuć</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}

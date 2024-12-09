@@ -30,12 +30,66 @@ namespace PurrfectMatch.Controllers
                 RequestId = ar.Id,
                 UserName = _applicationDbContext.Users.FirstOrDefault(u => u.Id == ar.UserId)?.UserName ?? "Brak użytkownika",
                 CatName = cats.FirstOrDefault(c => c.Id == ar.CatId)?.Name ?? "Nieznany kot",
+                CatId = ar.CatId,
                 HasOtherAnimals = ar.HasOtherAnimals,
                 HasChildren = ar.HasChildren,
                 Housing = ar.Housing
             }).ToList();
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ApproveRequest(int requestId, int catId)
+        {
+            Console.WriteLine($"RequestId: {requestId}, CatId: {catId}");
+
+            // Pobierz kota z bazy danych
+            var cat = await _catDbContext.Cats.FirstOrDefaultAsync(c => c.Id == catId);
+
+            // Sprawdź, czy kot istnieje
+            if (cat == null)
+            {
+                TempData["ErrorMessage"] = "Kot nie istnieje.";
+                return RedirectToAction("Index");
+            }
+
+            // Sprawdź, czy kot jest dostępny
+            if (!cat.IsAvailable)
+            {
+                TempData["ErrorMessage"] = "Kot jest już niedostępny.";
+                return RedirectToAction("Index");
+            }
+
+            // Oznacz kota jako niedostępnego
+            cat.IsAvailable = false;
+
+            // Usuń wniosek adopcyjny z bazy danych
+            var request = await _catDbContext.AdoptionRequests.FirstOrDefaultAsync(ar => ar.Id == requestId);
+            if (request != null)
+            {
+                _catDbContext.AdoptionRequests.Remove(request);
+            }
+
+            // Zapisz zmiany w bazie danych
+            await _catDbContext.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Wniosek został zaakceptowany. Kot został oznaczony jako niedostępny.";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RejectRequest(int requestId)
+        {
+            // Usuń wniosek adopcyjny
+            var request = await _catDbContext.AdoptionRequests.FirstOrDefaultAsync(ar => ar.Id == requestId);
+            if (request != null)
+            {
+                _catDbContext.AdoptionRequests.Remove(request);
+                await _catDbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
