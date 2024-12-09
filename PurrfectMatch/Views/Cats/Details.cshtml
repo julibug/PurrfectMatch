@@ -20,7 +20,9 @@
 </div>
 
 <a href="@Url.Action("Index", "Cats")" class="btn btn-secondary">Powrót do listy</a>
-<a href="@Url.Action("RequestAdoption", "Adoption", new { catId = Model.Id })" class="btn btn-primary"
+
+<a href="@Url.Action("RequestAdoption", "Adoption", new { catId = Model.Id })"
+   class="btn btn-primary @(!Model.IsAvailable ? "disabled" : "")"
 @(Model.IsAvailable ? "" : "disabled")>
-    Zgłoś adopcję
+    @(Model.IsAvailable ? "Zgłoś adopcję" : "Kotek zarezerwowany")
 </a>
