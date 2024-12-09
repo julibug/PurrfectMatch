@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PurrfectMatch.Data;
 using PurrfectMatch.Models;
 using System.Threading.Tasks;
 
@@ -10,11 +12,13 @@ namespace PurrfectMatch.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly CatDbContext _catDbContext;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, CatDbContext catDbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _catDbContext = catDbContext;
         }
 
         // Akcja rejestracji
@@ -97,15 +101,94 @@ namespace PurrfectMatch.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Cats");
         }
-        [Authorize]
-        public IActionResult Details()
-        {
-            // Pobranie informacji o aktualnym użytkowniku
-            var userName = User.Identity.Name; // Nazwa użytkownika
-            var userClaims = User.Claims.Select(c => new { c.Type, c.Value }).ToList(); // Wszystkie dane z claimów
+        //[Authorize]
+        //public IActionResult Details()
+        //{
+        //    // Pobranie informacji o aktualnym użytkowniku
+        //    var userName = User.Identity.Name; // Nazwa użytkownika
+        //    var userClaims = User.Claims.Select(c => new { c.Type, c.Value }).ToList(); // Wszystkie dane z claimów
 
-            // Przekazanie danych do widoku
-            return View(userClaims);
+        //    // Przekazanie danych do widoku
+        //    return View(userClaims);
+        //}
+
+        //[Authorize]
+        //public async Task<IActionResult> Profile()
+        //{
+        //    // Pobieramy zalogowanego użytkownika
+        //    var user = await _userManager.GetUserAsync(User);
+
+        //    if (user == null)
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+
+        //    // Pobieramy wszystkie wnioski adopcyjne danego użytkownika
+        //    var adoptionRequests = await _catDbContext.AdoptionRequests
+        //        .Where(r => r.UserId == user.Id)
+        //        .ToListAsync();
+
+        //    // Tworzymy listę do widoku
+        //    var profileViewModel = new List<UserAdoptionRequestViewModel>();
+
+        //    foreach (var request in adoptionRequests)
+        //    {
+        //        // Pobieramy dane o kocie na podstawie CatId
+        //        var cat = await _catDbContext.Cats.FirstOrDefaultAsync(c => c.Id == request.CatId);
+
+        //        if (cat != null) // Jeśli kot istnieje
+        //        {
+        //            profileViewModel.Add(new UserAdoptionRequestViewModel
+        //            {
+        //                CatName = cat.Name,
+        //                Status = request.Status // Status wniosku adopcyjnego
+        //            });
+        //        }
+        //    }
+
+        //    // Przekazujemy model do widoku
+        //    return View(profileViewModel);
+        //}
+
+        [Authorize]
+        public async Task<IActionResult> Details()
+        {
+            // Pobranie aktualnego użytkownika
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Pobieramy wszystkie wnioski adopcyjne danego użytkownika
+            var adoptionRequests = await _catDbContext.AdoptionRequests
+                .Where(r => r.UserId == user.Id)
+                .ToListAsync();
+
+            // Tworzymy listę do widoku
+            var userAdoptionRequestViewModels = new List<UserAdoptionRequestViewModel>();
+
+            foreach (var request in adoptionRequests)
+            {
+                // Pobieramy dane o kocie na podstawie CatId
+                var cat = await _catDbContext.Cats.FirstOrDefaultAsync(c => c.Id == request.CatId);
+
+                if (cat != null) // Jeśli kot istnieje
+                {
+                    userAdoptionRequestViewModels.Add(new UserAdoptionRequestViewModel
+                    {
+                        CatName = cat.Name,
+                        Status = request.Status // Status wniosku adopcyjnego
+                    });
+                }
+            }
+
+            // Przekazujemy dane użytkownika oraz wnioski adopcyjne do widoku
+            ViewBag.UserName = user.UserName;
+            ViewBag.UserEmail = user.Email;
+
+            return View(userAdoptionRequestViewModels);
         }
     }
 }

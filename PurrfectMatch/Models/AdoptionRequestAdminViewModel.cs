@@ -10,10 +10,14 @@ namespace PurrfectMatch.Models
         // Nazwa użytkownika, który złożył wniosek
         public string UserName { get; set; }
 
+        // Identyfikator użytkownika, który złożył wniosek
+        public string UserId { get; set; }  // Dodaj UserId
+
         // Nazwa kota, którego dotyczy wniosek
         public string CatName { get; set; }
 
         public int CatId { get; set; }
+
         // Czy użytkownik posiada inne zwierzęta
         public bool HasOtherAnimals { get; set; }
 

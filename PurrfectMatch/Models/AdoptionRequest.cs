@@ -8,5 +8,6 @@
         public bool HasOtherAnimals { get; set; }  
         public bool HasChildren { get; set; }  
         public bool Housing { get; set; }
+        public string Status { get; set; } = "Oczekujący";
     }
 }
