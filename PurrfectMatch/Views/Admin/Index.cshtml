@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PurrfectMatch.Models.AdoptionRequestAdminViewModel>
+
+<h2>Lista Wniosków Adopcyjnych</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Użytkownik</th>
+            <th>Kot</th>
+            <th>Czy ma inne zwierzęta</th>
+            <th>Czy ma dzieci</th>
+            <th>Typ mieszkania</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.RequestId</td>
+                <td>@request.UserName</td>
+                <td>@request.CatName</td>
+                <td>@(request.HasOtherAnimals ? "Tak" : "Nie")</td>
+                <td>@(request.HasChildren ? "Tak" : "Nie")</td>
+                <td>@(request.Housing ? "Dom" : "Mieszkanie")</td>
+            </tr>
+        }
+    </tbody>
+</table>
