@@ -23,31 +23,34 @@
     <button type="submit" class="btn btn-danger">Logout</button>
 </form>
 
-<h3>Wnioski adopcyjne</h3>
+@if (!User.IsInRole("Administrator"))
+{
+    <h3>Wnioski adopcyjne</h3>
 
-@if (Model != null && Model.Any())
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Imię kota</th>
-                <th>Status wniosku</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var request in Model)
-            {
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@request.CatName</td>
-                    <td>@request.Status</td>
+                    <th>Imię kota</th>
+                    <th>Status wniosku</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Nie złożono jeszcze żadnych wniosków adopcyjnych.</p>
+            </thead>
+            <tbody>
+                @foreach (var request in Model)
+                {
+                    <tr>
+                        <td>@request.CatName</td>
+                        <td>@request.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Nie złożono jeszcze żadnych wniosków adopcyjnych.</p>
+    }
 }
 
 
