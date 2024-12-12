@@ -34,6 +34,7 @@
                 <tr>
                     <th>Imię kota</th>
                     <th>Status wniosku</th>
+                    <th>Komentarz</th> <!-- Nowa kolumna -->
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +43,16 @@
                     <tr>
                         <td>@request.CatName</td>
                         <td>@request.Status</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(request.RejectionReason))
+                            {
+                                <span>@request.RejectionReason</span> <!-- Pokazujemy powód odrzucenia -->
+                            }
+                            else
+                            {
+                                <span>Gratulacje! Twój wniosek został przyjęty!</span> <!-- Jeśli nie ma powodu odrzucenia -->
+                            }
+                        </td>
                     </tr>
                 }
             </tbody>

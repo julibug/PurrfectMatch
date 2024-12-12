@@ -97,7 +97,7 @@ namespace PurrfectMatch.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RejectRequest(int requestId)
+        public async Task<IActionResult> RejectRequest(int requestId, string rejectionReason)
         {
             var request = await _catDbContext.AdoptionRequests
                 .FirstOrDefaultAsync(r => r.Id == requestId);
@@ -108,8 +108,9 @@ namespace PurrfectMatch.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Zmiana statusu wniosku na odrzucony
+            // Przypisz powód odrzucenia do wniosku
             request.Status = "Odrzucony";
+            request.RejectionReason = rejectionReason;
 
             // Zaktualizuj wniosek w bazie danych
             _catDbContext.AdoptionRequests.Update(request);

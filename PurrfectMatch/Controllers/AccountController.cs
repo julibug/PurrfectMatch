@@ -179,7 +179,8 @@ namespace PurrfectMatch.Controllers
                     userAdoptionRequestViewModels.Add(new UserAdoptionRequestViewModel
                     {
                         CatName = cat.Name,
-                        Status = request.Status // Status wniosku adopcyjnego
+                        Status = request.Status, // Status wniosku adopcyjnego
+                        RejectionReason = request.Status == "Odrzucony" ? request.RejectionReason : null
                     });
                 }
             }

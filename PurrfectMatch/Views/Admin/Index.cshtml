@@ -32,6 +32,13 @@
                     </form>
                     <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
                         <input type="hidden" name="requestId" value="@request.RequestId" />
+
+                        <!-- Pole do wpisania powodu odrzucenia -->
+                        <div class="form-group">
+                            <label for="rejectionReason">Powód odrzucenia:</label>
+                            <textarea name="rejectionReason" class="form-control" rows="3" required></textarea>
+                        </div>
+
                         <button type="submit" class="btn btn-danger btn-sm">Odrzuć</button>
                     </form>
                 </td>
