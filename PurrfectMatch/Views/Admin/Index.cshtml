@@ -25,22 +25,35 @@
                 <td>@(request.HasChildren ? "Tak" : "Nie")</td>
                 <td>@(request.Housing ? "Dom" : "Mieszkanie")</td>
                 <td>
-                    <form asp-action="ApproveRequest" asp-controller="Admin" method="post" style="display:inline;">
-                        <input type="hidden" name="requestId" value="@request.RequestId" />
-                        <input type="hidden" name="catId" value="@request.CatId" />
-                        <button type="submit" class="btn btn-success btn-sm">Akceptuj</button>
-                    </form>
-                    <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
-                        <input type="hidden" name="requestId" value="@request.RequestId" />
+                    @if (request.Status == "Zaakceptowany" || request.Status == "Odrzucony")
+                    {
+                        <span class="badge bg-secondary">Wniosek rozpatrzony</span>
 
-                        <!-- Pole do wpisania powodu odrzucenia -->
-                        <div class="form-group">
-                            <label for="rejectionReason">Powód odrzucenia:</label>
-                            <textarea name="rejectionReason" class="form-control" rows="3" required></textarea>
-                        </div>
+                        @if (request.Status == "Odrzucony" && !string.IsNullOrEmpty(request.RejectionReason))
+                        {
+                            <div><strong>Powód odrzucenia:</strong> @request.RejectionReason</div>
+                        }
+                    }
+                    else
+                    {
+                        <form asp-action="ApproveRequest" asp-controller="Admin" method="post" style="display:inline;">
+                            <input type="hidden" name="requestId" value="@request.RequestId" />
+                            <input type="hidden" name="catId" value="@request.CatId" />
+                            <button type="submit" class="btn btn-success btn-sm">Akceptuj</button>
+                        </form>
 
-                        <button type="submit" class="btn btn-danger btn-sm">Odrzuć</button>
-                    </form>
+                        <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
+                            <input type="hidden" name="requestId" value="@request.RequestId" />
+
+                            <!-- Pole do wpisania powodu odrzucenia -->
+                            <div class="form-group">
+                                <label for="rejectionReason">Powód odrzucenia:</label>
+                                <textarea name="rejectionReason" class="form-control" rows="3" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-danger btn-sm">Odrzuć</button>
+                        </form>
+                    }
                 </td>
             </tr>
         }

@@ -26,7 +26,7 @@ namespace PurrfectMatch.Controllers
         {
             // Pobierz wnioski adopcyjne, tylko te o statusie "Oczekujący"
             var requests = await _catDbContext.AdoptionRequests
-                .Where(r => r.Status == "Oczekujący")  // Tylko wnioski oczekujące
+                  // Tylko wnioski oczekujące
                 .Select(r => new AdoptionRequestAdminViewModel
                 {
                     RequestId = r.Id,
@@ -36,7 +36,9 @@ namespace PurrfectMatch.Controllers
                     HasOtherAnimals = r.HasOtherAnimals,
                     HasChildren = r.HasChildren,
                     Housing = r.Housing,
-                    CatId = r.CatId
+                    CatId = r.CatId,
+                    Status = r.Status, // Pobierz status
+                    RejectionReason = r.RejectionReason
                 })
                 .ToListAsync();
 

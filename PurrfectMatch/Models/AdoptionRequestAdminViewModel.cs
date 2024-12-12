@@ -26,5 +26,8 @@ namespace PurrfectMatch.Models
 
         // Typ mieszkania (dom/mieszkanie)
         public bool Housing { get; set; }
+
+        public string Status { get; set; }  // Dodajemy Status
+        public string RejectionReason { get; set; }
     }
 }
