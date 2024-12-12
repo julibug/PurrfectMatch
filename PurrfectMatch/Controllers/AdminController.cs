@@ -76,13 +76,13 @@ namespace PurrfectMatch.Controllers
         public async Task<IActionResult> ApproveRequest(int requestId, int catId)
         {
             // Pobierz wniosek adopcyjny
-            var request = await _catDbContext.AdoptionRequests
+            var approvedRequest = await _catDbContext.AdoptionRequests
                 .FirstOrDefaultAsync(r => r.Id == requestId);
 
             // Pobierz kota z bazy danych
             var cat = await _catDbContext.Cats.FirstOrDefaultAsync(c => c.Id == catId);
 
-            if (cat == null || request == null)
+            if (cat == null || approvedRequest == null)
             {
                 TempData["ErrorMessage"] = "Wniosek lub kot nie istnieje.";
                 return RedirectToAction("Index");
@@ -95,19 +95,33 @@ namespace PurrfectMatch.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Zmiana statusu wniosku na zaakceptowany
-            request.Status = "Zaakceptowany";
+            // Zmiana statusu zaakceptowanego wniosku
+            approvedRequest.Status = "Zaakceptowany";
 
             // Oznacz kota jako niedostępnego
             cat.IsAvailable = false;
 
-            // Zaktualizuj dane w bazie
-            _catDbContext.AdoptionRequests.Update(request);
+            // Pobierz inne wnioski dotyczące tego samego kota
+            var otherRequests = await _catDbContext.AdoptionRequests
+                .Where(r => r.CatId == catId && r.Id != requestId && r.Status == "Oczekujący")
+                .ToListAsync();
+
+            // Odrzuć wszystkie inne wnioski
+            foreach (var request in otherRequests)
+            {
+                request.Status = "Odrzucony";
+                request.RejectionReason = "Przepraszamy, ale kotek został już zarezerwowany do adopcji.";
+                _catDbContext.AdoptionRequests.Update(request);
+            }
+
+            // Zaktualizuj zaakceptowany wniosek i kota
+            _catDbContext.AdoptionRequests.Update(approvedRequest);
             _catDbContext.Cats.Update(cat);
 
+            // Zapisz zmiany w bazie danych
             await _catDbContext.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Wniosek został zaakceptowany, skontaktujemy się z użytkownikiem.";
+            TempData["SuccessMessage"] = "Wniosek został zaakceptowany. Pozostałe wnioski zostały automatycznie odrzucone.";
             return RedirectToAction("Index");
         }
 

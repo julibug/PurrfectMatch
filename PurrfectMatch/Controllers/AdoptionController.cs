@@ -33,7 +33,7 @@ namespace PurrfectMatch.Controllers
             var existingRequest = _context.AdoptionRequests
                 .FirstOrDefault(r => r.UserId == user.Id && r.CatId == catId);
 
-            if (existingRequest != null)
+            if (existingRequest != null && existingRequest.Status != "Odrzucony")
             {
                 // Jeśli wniosek już istnieje, przekazujemy informację do widoku
                 ViewBag.Message = "Twój wniosek został już złożony.";
@@ -64,7 +64,7 @@ namespace PurrfectMatch.Controllers
             var existingRequest = await _context.AdoptionRequests
                 .FirstOrDefaultAsync(r => r.UserId == user.Id && r.CatId == model.CatId);
 
-            if (existingRequest != null)
+            if (existingRequest != null && existingRequest.Status != "Odrzucony")
             {
                 // Jeśli wniosek już istnieje, przekazujemy informację do widoku
                 ModelState.AddModelError(string.Empty, "Twój wniosek został już złożony dla tego kota.");
