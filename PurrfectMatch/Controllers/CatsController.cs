@@ -71,7 +71,7 @@ namespace PurrfectMatch.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Cat cat)
+        public async Task<IActionResult> Edit(int id, Cat cat, IFormFile? imageFile)
         {
             if (id != cat.Id)
             {
@@ -80,12 +80,37 @@ namespace PurrfectMatch.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Update(cat);
+                var existingCat = _context.Cats.FirstOrDefault(c => c.Id == id);
+                if (existingCat == null)
+                {
+                    return NotFound();
+                }
+
+                // Aktualizujemy dane kota
+                existingCat.Name = cat.Name;
+                existingCat.Description = cat.Description;
+                existingCat.Age = cat.Age;
+                existingCat.IsAvailable = cat.IsAvailable;
+                existingCat.Diseases = cat.Diseases;
+
+                // Obsługa zdjęcia
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", imageFile.FileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(fileStream);
+                    }
+
+                    existingCat.ImageUrl = "/images/" + imageFile.FileName;
+                }
+
+                _context.Update(existingCat);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // Po edytowaniu przekierowujemy na stronę z listą kotów
             }
 
-            return View(cat);
+            return View(cat); // Zwracamy formularz edycji, jeśli coś jest niepoprawne
         }
 
         // Akcja, która wyświetla formularz potwierdzenia usunięcia kota

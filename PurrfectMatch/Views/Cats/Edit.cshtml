@@ -37,6 +37,10 @@
     <div class="form-group">
         <label for="imageFile">Zdjęcie kota</label>
         <input type="file" id="imageFile" name="imageFile" class="form-control" />
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <p>Obecne zdjęcie: <img src="@Model.ImageUrl" alt="Zdjęcie kota" style="max-height: 200px;" /></p>
+        }
     </div>
 
     <button type="submit" class="btn btn-primary">Zapisz zmiany</button>

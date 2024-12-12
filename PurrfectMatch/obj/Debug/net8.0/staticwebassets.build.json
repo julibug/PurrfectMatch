@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vTMfY1igq9akmcK60/BARNec/jycs2cwNav9NhB3Cj4=",
+  "Hash": "DIGy28X+SqQfrrshg2VJmf7NcT6O7/xjjp+7qcIS8r0=",
   "Source": "PurrfectMatch",
   "BasePath": "_content/PurrfectMatch",
   "Mode": "Default",
@@ -205,6 +205,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\founder3.JPEG"
+    },
+    {
+      "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\jak-przygotowae-si-r-do-adopcji-kota_1637150041907.png",
+      "SourceId": "PurrfectMatch",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\",
+      "BasePath": "_content/PurrfectMatch",
+      "RelativePath": "images/jak-przygotowae-si-r-do-adopcji-kota_1637150041907.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\jak-przygotowae-si-r-do-adopcji-kota_1637150041907.png"
     },
     {
       "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\śpiący-kot.jpg",
