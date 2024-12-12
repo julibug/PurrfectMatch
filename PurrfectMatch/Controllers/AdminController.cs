@@ -22,27 +22,40 @@ namespace PurrfectMatch.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string status = "All")
         {
-            // Pobierz wnioski adopcyjne, tylko te o statusie "Oczekujący"
-            var requests = await _catDbContext.AdoptionRequests
-                  // Tylko wnioski oczekujące
+            // Zacznij od zapytania do AdoptionRequests
+            IQueryable<AdoptionRequest> requestsQuery = _catDbContext.AdoptionRequests;
+
+            // Filtrowanie wniosków na podstawie statusu
+            if (status == "Rozpatrzone")
+            {
+                requestsQuery = requestsQuery.Where(r => r.Status == "Zaakceptowany" || r.Status == "Odrzucony");
+            }
+            else if (status == "Nierozpatrzone")
+            {
+                requestsQuery = requestsQuery.Where(r => r.Status == "Oczekujący");
+            }
+            // Jeśli status = "All" (domyślnie), wtedy nie stosujemy żadnego filtra
+
+            // Pobierz wnioski z bazy danych na podstawie filtrowania
+            var requests = await requestsQuery
                 .Select(r => new AdoptionRequestAdminViewModel
                 {
                     RequestId = r.Id,
-                    UserId = r.UserId,  // Dodaj UserId w modelu
-                    UserName = "", // Inicjalizujemy UserName, a potem zaktualizujemy go później
-                    CatName = _catDbContext.Cats.FirstOrDefault(c => c.Id == r.CatId).Name,  // Pobierz nazwę kota
+                    UserId = r.UserId,
+                    UserName = "", // Przypiszemy później UserName
+                    CatName = _catDbContext.Cats.FirstOrDefault(c => c.Id == r.CatId).Name,
                     HasOtherAnimals = r.HasOtherAnimals,
                     HasChildren = r.HasChildren,
                     Housing = r.Housing,
                     CatId = r.CatId,
-                    Status = r.Status, // Pobierz status
-                    RejectionReason = r.RejectionReason
+                    Status = r.Status,  // Pobierz status
+                    RejectionReason = r.RejectionReason  // Pobierz powód odrzucenia
                 })
                 .ToListAsync();
 
-            // Pobierz dane użytkowników na podstawie UserId
+            // Pobieramy użytkowników na podstawie UserId
             var userIds = requests.Select(r => r.UserId).Distinct().ToList();
             var users = await _userManager.Users.Where(u => userIds.Contains(u.Id)).ToListAsync();
 

@@ -2,6 +2,12 @@
 
 <h2>Lista Wniosków Adopcyjnych</h2>
 
+<div class="btn-group" role="group">
+    <a class="btn btn-primary" href="@Url.Action("Index", new { status = "All" })">Pokaż wszystkie</a>
+    <a class="btn btn-primary" href="@Url.Action("Index", new { status = "Rozpatrzone" })">Pokaż rozpatrzone</a>
+    <a class="btn btn-primary" href="@Url.Action("Index", new { status = "Nierozpatrzone" })">Pokaż nierozpatrzone</a>
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -19,7 +25,7 @@
         {
             <tr>
                 <td>@request.RequestId</td>
-                <td>@request.UserName</td>  <!-- Wyświetlamy UserName użytkownika -->
+                <td>@request.UserName</td>
                 <td>@request.CatName</td>
                 <td>@(request.HasOtherAnimals ? "Tak" : "Nie")</td>
                 <td>@(request.HasChildren ? "Tak" : "Nie")</td>
@@ -45,7 +51,6 @@
                         <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
                             <input type="hidden" name="requestId" value="@request.RequestId" />
 
-                            <!-- Pole do wpisania powodu odrzucenia -->
                             <div class="form-group">
                                 <label for="rejectionReason">Powód odrzucenia:</label>
                                 <textarea name="rejectionReason" class="form-control" rows="3" required></textarea>

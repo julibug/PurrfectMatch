@@ -205,21 +205,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RequestAdoption.cshtml",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
-              "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
-              "RelativeToolTip": "PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-08T15:25:45.642Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
@@ -230,8 +217,7 @@
               "RelativeToolTip": "PurrfectMatch\\Models\\AdoptionRequestAdminViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T13:54:20.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-09T13:54:20.153Z"
             },
             {
               "$type": "Document",
@@ -239,12 +225,24 @@
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "PurrfectMatch\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "PurrfectMatch\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACYAAAAkAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Controllers\\AdminController.cs*",
+              "RelativeToolTip": "PurrfectMatch\\Controllers\\AdminController.cs*",
+              "ViewState": "AgIAABUAAAAAAAAAAAAcwC8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T13:47:46.819Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RequestAdoption.cshtml",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
+              "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
+              "RelativeToolTip": "PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-08T15:25:45.642Z"
             },
             {
               "$type": "Document",
@@ -254,7 +252,7 @@
               "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Admin\\Index.cshtml",
               "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Admin\\Index.cshtml",
               "RelativeToolTip": "PurrfectMatch\\Views\\Admin\\Index.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAgwDcAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAgwEQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-09T13:56:12.424Z",
               "EditorCaption": ""
@@ -269,8 +267,7 @@
               "RelativeToolTip": "PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T14:43:21.495Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-09T14:43:21.495Z"
             },
             {
               "$type": "Document",
