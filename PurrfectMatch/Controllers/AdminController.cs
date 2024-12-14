@@ -177,5 +177,79 @@ namespace PurrfectMatch.Controllers
 
             return RedirectToAction("Index");
         }
+
+        // Akcja do wyświetlenia listy użytkowników
+        public async Task<IActionResult> ManageUsers()
+        {
+            // Pobierz wszystkich użytkowników
+            var users = await _userManager.Users.ToListAsync();
+
+            // Filtruj użytkowników, aby wykluczyć administratorów
+            var nonAdminUsers = new List<ApplicationUser>();
+            foreach (var user in users)
+            {
+                if (!await _userManager.IsInRoleAsync(user, "Administrator"))
+                {
+                    nonAdminUsers.Add(user);
+                }
+            }
+
+            return View(nonAdminUsers); // Przekaż tylko użytkowników niebędących administratorami
+        }
+
+        // Akcja edycji użytkownika (GET)
+        public async Task<IActionResult> EditUser(string id)
+        {
+            if (id == null) return NotFound();
+
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+
+            return View(user);
+        }
+
+        // Akcja edycji użytkownika (POST)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditUser(ApplicationUser model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.Id);
+                if (user == null) return NotFound();
+
+                user.UserName = model.UserName;
+                user.Email = model.Email;
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ManageUsers");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+            return View(model);
+        }
+
+        // Akcja usunięcia użytkownika
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            if (id == null) return NotFound();
+
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("ManageUsers");
+            }
+
+            return RedirectToAction("ManageUsers");
+        }
     }
 }
