@@ -55,3 +55,10 @@ body {
     margin: 0 auto; /* Wyœrodkowanie obrazka w kolumnie */
     margin-top: 10px;
 }
+
+img {
+    width: 300px; /* Ustaw szerokoœæ */
+    height: 300px; /* Ustaw wysokoœæ */
+    object-fit: cover; /* Zachowaj proporcje przy przycinaniu */
+    border-radius: 8px; /* Opcjonalne zaokr¹glenie rogów */
+}

@@ -4,28 +4,45 @@
     ViewBag.Title = "Szczegóły kota";
 }
 
-<h2>Szczegóły kota: @Model.Name</h2>
+<h2 class="text-center mb-4 text-black">Szczegóły kota: @Model.Name</h2>
 
-<div class="card" style="width: 18rem;">
-    @if (!string.IsNullOrEmpty(Model.ImageUrl))
-    {
-        <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name" />
-    }
-    <div class="card-body">
-        <h5 class="card-title">@Model.Name</h5>
-        <p class="card-text">@Model.Description</p>
-        <p><strong>Wiek:</strong> @Model.Age</p>
-        <p><strong>Status:</strong> @(Model.IsAvailable ? "Dostępny" : "Niedostępny")</p>
+<div class="d-flex justify-content-center">
+    <div class="card p-4 shadow-lg" style="max-width: 700px; background-color: #ffffff;">
+        <!-- Zdjęcie kota -->
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="text-center mb-4" style="height: 400px; overflow: hidden; background-color: #f8f9fa;">
+                <img src="@Model.ImageUrl"
+                     class="img-fluid rounded shadow"
+                     alt="@Model.Name"
+                     style="height: 100%; width: 100%; object-fit: cover;" />
+            </div>
+        }
+
+        <!-- Informacje o kocie -->
+        <div class="card-body">
+            <h3 class="card-title text-center text-black">@Model.Name</h3>
+            <p class="card-text mt-3 text-black">@Model.Description</p>
+            <p><strong class="text-black">Wiek:</strong> @Model.Age</p>
+            <p>
+                <strong class="text-black">Status:</strong>
+                <span class="badge @(Model.IsAvailable ? "bg-success" : "bg-danger")">
+                    @(Model.IsAvailable ? "Dostępny" : "Niedostępny")
+                </span>
+            </p>
+        </div>
     </div>
 </div>
 
-<a href="@Url.Action("Index", "Cats")" class="btn btn-secondary">Powrót do listy</a>
+<div class="text-center mt-4">
+    <a href="@Url.Action("Index", "Cats")" class="btn btn-secondary me-2 btn-lg text-white" style="background-color: #6c757d;">Powrót do listy</a>
 
-@if (!User.IsInRole("Administrator"))
-{
-    <!-- Jeżeli kot jest dostępny i użytkownik nie jest administratorem, przycisk jest widoczny -->
-    <a href="@Url.Action("RequestAdoption", "Adoption", new { catId = Model.Id })"
-       class="btn btn-primary @(Model.IsAvailable ? "" : "disabled")">
-        @(Model.IsAvailable ? "Zgłoś adopcję" : "Kotek zarezerwowany")
-    </a>
-}
+    @if (!User.IsInRole("Administrator"))
+    {
+        <!-- Jeżeli kot jest dostępny i użytkownik nie jest administratorem, przycisk jest widoczny -->
+        <a href="@Url.Action("RequestAdoption", "Adoption", new { catId = Model.Id })"
+           class="btn btn-primary btn-lg text-white @(Model.IsAvailable ? "" : "disabled")" style="background-color: #007bff;">
+            @(Model.IsAvailable ? "Zgłoś adopcję" : "Kotek zarezerwowany")
+        </a>
+    }
+</div>

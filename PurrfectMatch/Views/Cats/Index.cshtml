@@ -4,14 +4,14 @@
     ViewBag.Title = "Lista kotów";
 }
 
-<h2>Lista kotów</h2>
+<h2 class="mb-4">Lista kotów</h2>
 
 @if (User.IsInRole("Administrator"))
 {
-    <div class="mb-4">
+    <div class="mb-2">
         <a href="@Url.Action("Create", "Cats")" class="btn btn-primary">Dodaj nowego kota</a>
     </div>
-    <div class="mb-4">
+    <div class="mb-1">
         <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Przeglądaj wnioski adopcyjne</a>
     </div>
 }
@@ -22,7 +22,10 @@
         <div class="row mb-4 align-items-center border-bottom pb-3">
             <!-- Zdjęcie kota -->
             <div class="col-md-4 text-center">
-                <img src="@cat.ImageUrl" class="img-fluid rounded" alt="@cat.Name" style="max-height: 200px; object-fit: cover;" />
+                <img src="@cat.ImageUrl"
+                     class="img-fluid rounded"
+                     alt="@cat.Name"
+                     style="max-height: 200px; object-fit: cover; width: 100%; height: 200px;" />
             </div>
 
             <!-- Dane kota -->

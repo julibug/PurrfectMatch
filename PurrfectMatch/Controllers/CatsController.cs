@@ -37,21 +37,35 @@ namespace PurrfectMatch.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Obsługa przesyłania zdjęcia
                 if (imageFile != null && imageFile.Length > 0)
                 {
-                    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", imageFile.FileName);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    using (var stream = new MemoryStream())
                     {
-                        await imageFile.CopyToAsync(fileStream);
+                        await imageFile.CopyToAsync(stream);
+                        stream.Position = 0;
+
+                        // Przycinanie i skalowanie obrazu
+                        using (var image = Image.Load(stream))
+                        {
+                            image.Mutate(x => x.Resize(new ResizeOptions
+                            {
+                                Size = new Size(300, 300), // np. kwadrat 300x300
+                                Mode = ResizeMode.Crop
+                            }));
+                            image.Save(filePath); // Zapis przyciętego obrazu
+                        }
                     }
 
-                    cat.ImageUrl = "/images/" + imageFile.FileName;
+                    cat.ImageUrl = "/images/" + uniqueFileName;
                 }
 
                 _context.Cats.Add(cat);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index)); // Po dodaniu przekieruj na listę kotów
+                return RedirectToAction(nameof(Index));
             }
 
             return View(cat);
@@ -73,11 +87,6 @@ namespace PurrfectMatch.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(int id, Cat cat, IFormFile? imageFile)
         {
-            if (id != cat.Id)
-            {
-                return BadRequest();
-            }
-
             if (ModelState.IsValid)
             {
                 var existingCat = _context.Cats.FirstOrDefault(c => c.Id == id);
@@ -86,31 +95,43 @@ namespace PurrfectMatch.Controllers
                     return NotFound();
                 }
 
-                // Aktualizujemy dane kota
                 existingCat.Name = cat.Name;
                 existingCat.Description = cat.Description;
                 existingCat.Age = cat.Age;
                 existingCat.IsAvailable = cat.IsAvailable;
                 existingCat.Diseases = cat.Diseases;
 
-                // Obsługa zdjęcia
                 if (imageFile != null && imageFile.Length > 0)
                 {
-                    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", imageFile.FileName);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    using (var stream = new MemoryStream())
                     {
-                        await imageFile.CopyToAsync(fileStream);
+                        await imageFile.CopyToAsync(stream);
+                        stream.Position = 0;
+
+                        using (var image = Image.Load(stream))
+                        {
+                            image.Mutate(x => x.Resize(new ResizeOptions
+                            {
+                                Size = new Size(300, 300),
+                                Mode = ResizeMode.Crop
+                            }));
+                            image.Save(filePath);
+                        }
                     }
 
-                    existingCat.ImageUrl = "/images/" + imageFile.FileName;
+                    existingCat.ImageUrl = "/images/" + uniqueFileName;
                 }
 
                 _context.Update(existingCat);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index)); // Po edytowaniu przekierowujemy na stronę z listą kotów
+                return RedirectToAction(nameof(Index));
             }
 
-            return View(cat); // Zwracamy formularz edycji, jeśli coś jest niepoprawne
+            return View(cat);
         }
 
         // Akcja, która wyświetla formularz potwierdzenia usunięcia kota

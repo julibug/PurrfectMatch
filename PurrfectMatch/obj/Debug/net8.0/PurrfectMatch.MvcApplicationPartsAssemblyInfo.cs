@@ -11,13 +11,7 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("PurrfectMatch")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb820dec2b41a16ece648d6192ddf5701187e78a")]
-[assembly: System.Reflection.AssemblyProductAttribute("PurrfectMatch")]
-[assembly: System.Reflection.AssemblyTitleAttribute("PurrfectMatch")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("SixLabors.ImageSharp.Web")]
 
 // Wygenerowane przez klasę WriteCodeFragment programu MSBuild.
 

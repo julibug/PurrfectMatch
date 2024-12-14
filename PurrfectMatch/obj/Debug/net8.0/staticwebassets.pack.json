@@ -13,8 +13,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\20ad45c7-9d43-4717-bb28-5798fde0f3c7.png",
+      "PackagePath": "staticwebassets\\images\\20ad45c7-9d43-4717-bb28-5798fde0f3c7.png"
+    },
+    {
       "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\540cc43d747cb_o_original.jpg",
       "PackagePath": "staticwebassets\\images\\540cc43d747cb_o_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\7af127c7-dcc8-498d-86dd-1395a86d28eb.jpg",
+      "PackagePath": "staticwebassets\\images\\7af127c7-dcc8-498d-86dd-1395a86d28eb.jpg"
     },
     {
       "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\Cute-Cat-icon.png",
@@ -23,6 +31,10 @@
     {
       "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\cut cat serhio 02-1813x1811-720x719.jpg",
       "PackagePath": "staticwebassets\\images\\cut cat serhio 02-1813x1811-720x719.jpg"
+    },
+    {
+      "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\ff47bf03-0de9-48cf-902a-a1dc464cef30.png",
+      "PackagePath": "staticwebassets\\images\\ff47bf03-0de9-48cf-902a-a1dc464cef30.png"
     },
     {
       "Id": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\founder1.JPEG",
