@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pq5BYVPFzJ5HOdvQpDUEAoUKayYx0d5FzwNSeqGReUM=",
+  "Hash": "XGvJUrCHo7PqBuwhBOfH27HkggVPzZ+z/jpaeU/QClM=",
   "Source": "PurrfectMatch",
   "BasePath": "_content/PurrfectMatch",
   "Mode": "Default",
@@ -224,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\jak-przygotowae-si-r-do-adopcji-kota_1637150041907.png"
+    },
+    {
+      "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\pobrane.jpg",
+      "SourceId": "PurrfectMatch",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\",
+      "BasePath": "_content/PurrfectMatch",
+      "RelativePath": "images/pobrane.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\pobrane.jpg"
     },
     {
       "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\suchy-nos-u-kota-o-czym-mocnye-iwiadczya-lareg_1679585060524.png",

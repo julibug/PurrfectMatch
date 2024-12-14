@@ -44,11 +44,15 @@
                         <td>@request.CatName</td>
                         <td>@request.Status</td>
                         <td>
-                            @if (!string.IsNullOrEmpty(request.RejectionReason))
+                            @if (request.Status == "Oczekujący")
+                            {
+                                <span>Twój wniosek czeka na rozpatrzenie.</span> <!-- Komentarz dla oczekujących -->
+                            }
+                            else if (request.Status == "Odrzucony" && !string.IsNullOrEmpty(request.RejectionReason))
                             {
                                 <span>@request.RejectionReason</span> <!-- Pokazujemy powód odrzucenia -->
                             }
-                            else
+                            else if (request.Status == "Zaakceptowany")
                             {
                                 <span>Gratulacje! Twój wniosek został przyjęty! Niedługo skontaktujemy się z tobą mailowo.</span> <!-- Jeśli nie ma powodu odrzucenia -->
                             }
