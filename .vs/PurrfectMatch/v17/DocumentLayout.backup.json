@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\views\\account\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\views\\account\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\controllers\\adoptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\controllers\\adoptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\models\\adoptionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\views\\account\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\views\\account\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\models\\useradoptionrequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\models\\useradoptionrequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\views\\cats\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\views\\adoption\\requestadoption.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\views\\adoption\\requestadoption.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|solutionrelative:purrfectmatch\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62B68022-6069-4860-A2D2-DE4BDD80EA8B}|PurrfectMatch\\PurrfectMatch.csproj|c:\\users\\julia\\documents\\github\\purrfectmatch\\purrfectmatch\\purrfectmatch\\models\\adoptionrequestadminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -209,11 +209,73 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "PurrfectMatch\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "PurrfectMatch\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAcwLIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T13:47:46.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Cats\\Edit.cshtml",
+              "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Cats\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Cats\\Edit.cshtml",
+              "RelativeToolTip": "PurrfectMatch\\Views\\Cats\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T22:44:52.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdoptionRequest.cs",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Models\\AdoptionRequest.cs",
+              "RelativeDocumentMoniker": "PurrfectMatch\\Models\\AdoptionRequest.cs",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Models\\AdoptionRequest.cs",
+              "RelativeToolTip": "PurrfectMatch\\Models\\AdoptionRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T15:04:19.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserAdoptionRequestViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
+              "RelativeDocumentMoniker": "PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
+              "RelativeToolTip": "PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T14:43:21.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "PurrfectMatch\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAEEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-09T13:56:12.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Account\\Details.cshtml",
               "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Account\\Details.cshtml",
@@ -226,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AdoptionController.cs",
               "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Controllers\\AdoptionController.cs",
               "RelativeDocumentMoniker": "PurrfectMatch\\Controllers\\AdoptionController.cs",
@@ -234,63 +296,11 @@
               "RelativeToolTip": "PurrfectMatch\\Controllers\\AdoptionController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAowEIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T15:14:35.821Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "PurrfectMatch\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "PurrfectMatch\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAmwH0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T13:47:46.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-08T15:14:35.821Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Cats\\Edit.cshtml",
-              "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Cats\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Cats\\Edit.cshtml",
-              "RelativeToolTip": "PurrfectMatch\\Views\\Cats\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T22:44:52.209Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdoptionRequest.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Models\\AdoptionRequest.cs",
-              "RelativeDocumentMoniker": "PurrfectMatch\\Models\\AdoptionRequest.cs",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Models\\AdoptionRequest.cs",
-              "RelativeToolTip": "PurrfectMatch\\Models\\AdoptionRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T15:04:19.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserAdoptionRequestViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
-              "RelativeDocumentMoniker": "PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
-              "RelativeToolTip": "PurrfectMatch\\Models\\UserAdoptionRequestViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T14:43:21.495Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Cats\\Details.cshtml",
               "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Cats\\Details.cshtml",
@@ -302,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "RequestAdoption.cshtml",
               "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
               "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Adoption\\RequestAdoption.cshtml",
@@ -314,7 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AdoptionRequestAlreadySubmitted.cshtml",
               "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Adoption\\AdoptionRequestAlreadySubmitted.cshtml",
               "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Adoption\\AdoptionRequestAlreadySubmitted.cshtml",
@@ -323,18 +333,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-12T19:04:05.058Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Admin\\Index.cshtml",
-              "RelativeDocumentMoniker": "PurrfectMatch\\Views\\Admin\\Index.cshtml",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\Views\\Admin\\Index.cshtml",
-              "RelativeToolTip": "PurrfectMatch\\Views\\Admin\\Index.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAgwEQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-09T13:56:12.424Z"
             },
             {
               "$type": "Document",

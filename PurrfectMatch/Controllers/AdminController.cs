@@ -148,5 +148,34 @@ namespace PurrfectMatch.Controllers
             TempData["SuccessMessage"] = "Wniosek został odrzucony.";
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteRequest(int requestId)
+        {
+            // Pobierz wniosek adopcyjny z bazy danych
+            var request = await _catDbContext.AdoptionRequests
+                .FirstOrDefaultAsync(r => r.Id == requestId);
+
+            if (request == null)
+            {
+                TempData["ErrorMessage"] = "Wniosek nie istnieje.";
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                // Usuń wniosek z bazy danych
+                _catDbContext.AdoptionRequests.Remove(request);
+                await _catDbContext.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = "Wniosek został pomyślnie usunięty.";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Wystąpił błąd podczas usuwania wniosku: {ex.Message}";
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
