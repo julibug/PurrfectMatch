@@ -238,18 +238,34 @@ namespace PurrfectMatch.Controllers
         // Akcja usunięcia użytkownika
         public async Task<IActionResult> DeleteUser(string id)
         {
-            if (id == null) return NotFound();
-
             var user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
+            if (user == null)
+            {
+                return NotFound();
+            }
 
+            // Usuwanie powiązanych wniosków adopcyjnych
+            var adoptionRequests = await _catDbContext.AdoptionRequests
+                .Where(r => r.UserId == user.Id)
+                .ToListAsync();
+
+            // Usuwamy powiązane wnioski adopcyjne
+            _catDbContext.AdoptionRequests.RemoveRange(adoptionRequests);
+            await _catDbContext.SaveChangesAsync();
+
+            // Usuwanie użytkownika
             var result = await _userManager.DeleteAsync(user);
             if (result.Succeeded)
             {
                 return RedirectToAction("ManageUsers");
             }
 
-            return RedirectToAction("ManageUsers");
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(user);
         }
     }
 }
