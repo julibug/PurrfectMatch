@@ -8,21 +8,22 @@
     var signInManager = Context.RequestServices.GetService<SignInManager<ApplicationUser>>();
 }
 
-<h2>Witaj, @User.Identity.Name</h2>
+<h2 class="mb-4">Witaj, @User.Identity.Name</h2>
 
 <p>
-    <strong>Username:</strong> @User.Identity.Name
+    <strong>Nazwa użytkownika:</strong> @User.Identity.Name
 </p>
 
 <p>
-    <strong>Email:</strong> @User.Identity.Name
+    <strong>E-mail:</strong> @User.Identity.Name
 </p>
 
 <!-- Przycisk wylogowania -->
 <form asp-controller="Account" asp-action="Logout" method="post">
-    <button type="submit" class="btn btn-danger">Logout</button>
+    <button type="submit" class="btn btn-danger">Wyloguj</button>
 </form>
 
+<div style="margin-top: 30px;">
 @if (!User.IsInRole("Administrator"))
 {
     <h3>Wnioski adopcyjne</h3>
@@ -67,5 +68,6 @@
         <p>Nie złożono jeszcze żadnych wniosków adopcyjnych.</p>
     }
 }
+</div>
 
 

@@ -22,8 +22,8 @@
                 <td>@user.Email</td>
                 <td>@user.UserName</td>
                 <td>
-                    <a href="@Url.Action("EditUser", "Admin", new { id = user.Id })" class="btn btn-warning">Edit</a>
-                    <a href="@Url.Action("DeleteUser", "Admin", new { id = user.Id })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                    <a href="@Url.Action("EditUser", "Admin", new { id = user.Id })" class="btn btn-warning">Edytuj</a>
+                    <a href="@Url.Action("DeleteUser", "Admin", new { id = user.Id })" class="btn btn-danger" onclick="return confirm('Chcesz usunąć tego użytkownika?');">Usuń</a>
                 </td>
             </tr>
         }

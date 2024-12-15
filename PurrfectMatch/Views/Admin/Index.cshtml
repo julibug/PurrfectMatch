@@ -30,9 +30,10 @@
                 <td>@request.RequestId</td>
                 <td>@request.UserName</td>
                 <td>@request.CatName</td>
-                <td>@(request.HasOtherAnimals ? "Tak" : "Nie")</td>
-                <td>@(request.HasChildren ? "Tak" : "Nie")</td>
-                <td>@(request.Housing ? "Dom" : "Mieszkanie")</td>
+                <td>@(request.HasOtherAnimals.HasValue ? (request.HasOtherAnimals.Value ? "Tak" : "Nie") : "Brak danych")</td>
+                <td>@(request.HasChildren.HasValue ? (request.HasChildren.Value ? "Tak" : "Nie") : "Brak danych")</td>
+                <td>@(request.Housing.HasValue ? (request.Housing.Value ? "Dom" : "Mieszkanie") : "Brak danych")</td>
+
                 <td>@request.AdoptionReason</td>
                 <td>
                     @if (request.Status == "Zaakceptowany" || request.Status == "Odrzucony")

@@ -19,13 +19,13 @@ namespace PurrfectMatch.Models
         public int CatId { get; set; }
 
         // Czy użytkownik posiada inne zwierzęta
-        public bool HasOtherAnimals { get; set; }
+        public bool? HasOtherAnimals { get; set; }
 
         // Czy użytkownik ma dzieci
-        public bool HasChildren { get; set; }
+        public bool? HasChildren { get; set; }
 
         // Typ mieszkania (dom/mieszkanie)
-        public bool Housing { get; set; }
+        public bool? Housing { get; set; }
 
         public string Status { get; set; }  // Dodajemy Status
         public string RejectionReason { get; set; }
