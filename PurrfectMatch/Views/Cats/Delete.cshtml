@@ -16,11 +16,13 @@
     <p><strong>Status:</strong> @(Model.IsAvailable ? "Dostępny" : "Niedostępny")</p>
 </div>
 
-<!-- Formularz do potwierdzenia usunięcia -->
-<form method="post" asp-action="Delete" asp-route-id="@Model.Id">
-    @Html.AntiForgeryToken()
-    <button type="submit" class="btn btn-danger">Tak, usuń</button>
-</form>
+<div class="d-flex">
+    <!-- Formularz do potwierdzenia usunięcia -->
+    <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-danger me-2">Tak, usuń</button>
+    </form>
 
-<!-- Link do powrotu bez usuwania -->
-<a href="@Url.Action("Index", "Cats")" class="btn btn-secondary">Nie, wróć</a>
+    <!-- Link do powrotu bez usuwania -->
+    <a href="@Url.Action("Index", "Cats")" class="btn btn-secondary">Nie, wróć</a>
+</div>

@@ -62,7 +62,7 @@
         <!-- Jeżeli kot jest dostępny i użytkownik nie jest administratorem, przycisk jest widoczny -->
         <a href="@Url.Action("RequestAdoption", "Adoption", new { catId = Model.Id })"
            class="btn btn-primary btn-lg text-white @(Model.IsAvailable ? "" : "disabled")" style="background-color: #007bff;">
-            @(Model.IsAvailable ? "Zgłoś adopcję" : "Kotek zarezerwowany")
+            @(Model.IsAvailable ? "Zgłoś chęć adopcji" : "Kotek zarezerwowany")
         </a>
     }
 </div>

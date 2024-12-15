@@ -39,12 +39,12 @@
                     </span>
                 </p>
                 <div class="btn-group" role="group">
-                    <a href="@Url.Action("Details", "Cats", new { id = cat.Id })" class="btn btn-primary me-2">Zobacz szczegóły</a>
+                    <a href="@Url.Action("Details", "Cats", new { id = cat.Id })" class="btn btn-primary me-2 rounded">Zobacz szczegóły</a>
 
                     @if (User.IsInRole("Administrator"))
                     {
-                        <a href="@Url.Action("Edit", "Cats", new { id = cat.Id })" class="btn btn-warning me-2">Edytuj</a>
-                        <a href="@Url.Action("Delete", "Cats", new { id = cat.Id })" class="btn btn-danger">Usuń</a>
+                        <a href="@Url.Action("Edit", "Cats", new { id = cat.Id })" class="btn btn-warning me-2 rounded">Edytuj</a>
+                        <a href="@Url.Action("Delete", "Cats", new { id = cat.Id })" class="btn btn-danger rounded">Usuń</a>
                     }
                 </div>
             </div>

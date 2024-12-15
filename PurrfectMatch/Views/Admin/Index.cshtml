@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<PurrfectMatch.Models.AdoptionRequestAdminViewModel>
 
-<h2>Lista Wniosków Adopcyjnych</h2>
+<h2 class="mb-4">Lista wniosków adopcyjnych</h2>
 
-<div class="btn-group" role="group">
-    <a class="btn btn-primary" href="@Url.Action("Index", new { status = "All" })">Pokaż wszystkie</a>
-    <a class="btn btn-primary" href="@Url.Action("Index", new { status = "Rozpatrzone" })">Pokaż rozpatrzone</a>
-    <a class="btn btn-primary" href="@Url.Action("Index", new { status = "Nierozpatrzone" })">Pokaż nierozpatrzone</a>
+<div class="d-flex align-items-center">
+    <a href="@Url.Action("Index", new { status = "All" })" class="btn btn-primary text-white rounded-start">Pokaż wszystkie</a>
+    <div class="mx-1"></div> <!-- Separator -->
+    <a href="@Url.Action("Index", new { status = "Rozpatrzone" })" class="btn btn-primary text-white">Pokaż rozpatrzone</a>
+    <div class="mx-1"></div> <!-- Separator -->
+    <a href="@Url.Action("Index", new { status = "Nierozpatrzone" })" class="btn btn-primary text-white rounded-end">Pokaż nierozpatrzone</a>
 </div>
 
 <table class="table table-striped">
