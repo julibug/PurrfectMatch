@@ -9,10 +9,10 @@
 @if (User.IsInRole("Administrator"))
 {
     <div class="mb-2">
-        <a href="@Url.Action("Create", "Cats")" class="btn btn-primary">Dodaj nowego kota</a>
+        <a href="@Url.Action("Create", "Cats")" class="btn btn-pink">Dodaj nowego kota</a>
     </div>
     <div class="mb-1">
-        <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Przeglądaj wnioski adopcyjne</a>
+        <a href="@Url.Action("Index", "Admin")" class="btn btn-pink">Przeglądaj wnioski adopcyjne</a>
     </div>
 }
 
@@ -32,7 +32,12 @@
             <div class="col-md-8">
                 <h4>@cat.Name</h4>
                 <p>@cat.Description</p>
-                <p><strong>Status:</strong> @(cat.IsAvailable ? "Dostępny" : "Niedostępny")</p>
+                <p>
+                    <strong>Status:</strong>
+                    <span class="badge @(cat.IsAvailable ? "bg-success" : "bg-danger")">
+                        @(cat.IsAvailable ? "Dostępny" : "Niedostępny")
+                    </span>
+                </p>
                 <div class="btn-group" role="group">
                     <a href="@Url.Action("Details", "Cats", new { id = cat.Id })" class="btn btn-primary me-2">Zobacz szczegóły</a>
 

@@ -23,7 +23,27 @@
         <div class="card-body">
             <h3 class="card-title text-center text-black">@Model.Name</h3>
             <p class="card-text mt-3 text-black">@Model.Description</p>
-            <p><strong class="text-black">Wiek:</strong> @Model.Age</p>
+            <p>
+                <strong class="text-black">Wiek:</strong>
+                @if (Model.Age == 0)
+                {
+                    <span>mniej niż 1 rok</span>
+                }
+                else if (Model.Age == 1)
+                {
+                    <span>1 rok</span>
+                }
+                else if (Model.Age >= 2 && Model.Age <= 4)
+                {
+                    <span>@Model.Age lata</span>
+                }
+                else
+                {
+                    <span>@Model.Age lat</span>
+                }
+            </p>
+            <p><strong class="text-black">Płeć:</strong> @Model.Gender</p>
+            <p><strong class="text-black">Choroby:</strong> @(string.IsNullOrEmpty(Model.Diseases) ? "Brak informacji" : Model.Diseases)</p>
             <p>
                 <strong class="text-black">Status:</strong>
                 <span class="badge @(Model.IsAvailable ? "bg-success" : "bg-danger")">

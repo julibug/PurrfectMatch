@@ -4,44 +4,90 @@
     ViewBag.Title = "Edytuj kota";
 }
 
-<h2>Edytuj kota</h2>
+<h2 class="text-center mb-4 text-black">Edytuj profil kota</h2>
 
 @using (Html.BeginForm("Edit", "Cats", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         @Html.LabelFor(model => model.Name)
         @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Name)
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         @Html.LabelFor(model => model.Description)
         @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Description)
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         @Html.LabelFor(model => model.Age)
         @Html.TextBoxFor(model => model.Age, new { @class = "form-control", type = "number" })
         @Html.ValidationMessageFor(model => model.Age)
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
+        @Html.LabelFor(model => model.Gender)
+        @Html.DropDownListFor(model => model.Gender, new SelectList(new[] { "Kocur", "Kocica" }), "Wybierz płeć", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(model => model.Diseases)
+        @Html.TextAreaFor(model => model.Diseases, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group mb-3">
         @Html.LabelFor(model => model.IsAvailable)
         @Html.CheckBoxFor(model => model.IsAvailable, new { @class = "form-check-input" })
         @Html.ValidationMessageFor(model => model.IsAvailable)
     </div>
 
-    <div class="form-group">
+    <!-- Sekcja dla obecnego zdjęcia -->
+    <div class="form-group mb-3">
         <label for="imageFile">Zdjęcie kota</label>
-        <input type="file" id="imageFile" name="imageFile" class="form-control" />
+        <input type="file" id="imageFile" name="imageFile" class="form-control" onchange="previewImage(event)" />
+
         @if (!string.IsNullOrEmpty(Model.ImageUrl))
         {
-            <p>Obecne zdjęcie: <img src="@Model.ImageUrl" alt="Zdjęcie kota" style="max-height: 200px;" /></p>
+            <div class="mt-3">
+                <p><strong>Obecne zdjęcie:</strong></p>
+                <img src="@Model.ImageUrl" alt="Zdjęcie kota" style="max-height: 200px; width: auto; display: block; margin-top: 10px;" />
+            </div>
         }
+
+        <!-- Podgląd nowego zdjęcia -->
+        <div id="imagePreview" class="mt-3" style="display: none;">
+            <p><strong>Podgląd nowego zdjęcia:</strong></p>
+            <img id="newImagePreview" style="max-height: 200px; width: auto; display: none;" />
+        </div>
     </div>
 
     <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
 }
+
+<script>
+    function previewImage(event) {
+        // Uzyskaj element obrazka do podglądu
+        var reader = new FileReader();
+        var imagePreview = document.getElementById("imagePreview");
+        var newImagePreview = document.getElementById("newImagePreview");
+
+        // Po załadowaniu nowego zdjęcia
+        reader.onload = function () {
+            // Ustaw źródło obrazu podglądu na dane z pliku
+            newImagePreview.src = reader.result;
+
+            // Pokaż sekcję podglądu i obrazek
+            imagePreview.style.display = "block";
+            newImagePreview.style.display = "block";
+        }
+
+        // Sprawdź, czy plik został wybrany
+        if (event.target.files && event.target.files[0]) {
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    }
+</script>
+

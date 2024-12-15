@@ -62,3 +62,26 @@ img {
     object-fit: cover; /* Zachowaj proporcje przy przycinaniu */
     border-radius: 8px; /* Opcjonalne zaokr¹glenie rogów */
 }
+
+.btn-purple {
+    background-color: #6f42c1; /* Fioletowy kolor */
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #5a32a3; /* Ciemniejszy fiolet na hover */
+    color: white;
+}
+
+.btn-pink {
+    background-color: #e83e8c; /* Ró¿owy kolor */
+    color: white;
+}
+
+.btn-pink:hover {
+    background-color: #d6336c; /* Ciemniejszy ró¿ na hover */
+    color: white;
+}
+
+
+

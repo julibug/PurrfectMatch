@@ -37,6 +37,7 @@ namespace PurrfectMatch.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Przesyłanie zdjęcia, przycinanie i zapisywanie (tak jak wcześniej)
                 if (imageFile != null && imageFile.Length > 0)
                 {
                     var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
@@ -48,7 +49,6 @@ namespace PurrfectMatch.Controllers
                         await imageFile.CopyToAsync(stream);
                         stream.Position = 0;
 
-                        // Przycinanie i skalowanie obrazu
                         using (var image = Image.Load(stream))
                         {
                             image.Mutate(x => x.Resize(new ResizeOptions
@@ -100,7 +100,9 @@ namespace PurrfectMatch.Controllers
                 existingCat.Age = cat.Age;
                 existingCat.IsAvailable = cat.IsAvailable;
                 existingCat.Diseases = cat.Diseases;
+                existingCat.Gender = cat.Gender; // Ustawiamy płeć kota
 
+                // Obsługa zdjęcia, przycinanie i zapisywanie (tak jak wcześniej)
                 if (imageFile != null && imageFile.Length > 0)
                 {
                     var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
