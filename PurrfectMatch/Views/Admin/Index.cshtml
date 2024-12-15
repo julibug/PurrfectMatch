@@ -19,6 +19,7 @@
             <th>Czy ma inne zwierzęta</th>
             <th>Czy ma dzieci</th>
             <th>Typ mieszkania</th>
+            <th>Uzasadnienie adopcji</th>
             <th>Akcje</th>
         </tr>
     </thead>
@@ -32,6 +33,7 @@
                 <td>@(request.HasOtherAnimals ? "Tak" : "Nie")</td>
                 <td>@(request.HasChildren ? "Tak" : "Nie")</td>
                 <td>@(request.Housing ? "Dom" : "Mieszkanie")</td>
+                <td>@request.AdoptionReason</td>
                 <td>
                     @if (request.Status == "Zaakceptowany" || request.Status == "Odrzucony")
                     {
@@ -44,28 +46,39 @@
                     }
                     else
                     {
-                        <form asp-action="ApproveRequest" asp-controller="Admin" method="post" style="display:inline;">
-                            <input type="hidden" name="requestId" value="@request.RequestId" />
-                            <input type="hidden" name="catId" value="@request.CatId" />
-                            <button type="submit" class="btn btn-success btn-sm">Akceptuj</button>
-                        </form>
+                        <div class="d-flex">
+                            <!-- Przycisk Akceptuj -->
+                            <form asp-action="ApproveRequest" asp-controller="Admin" method="post" style="display:inline;">
+                                <input type="hidden" name="requestId" value="@request.RequestId" />
+                                <input type="hidden" name="catId" value="@request.CatId" />
+                                <button type="submit" class="btn btn-success btn-sm me-2">Akceptuj</button> <!-- Dodajemy margines po prawej -->
+                            </form>
 
-                        <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
-                            <input type="hidden" name="requestId" value="@request.RequestId" />
+                            <!-- Przycisk Odrzuć -->
+                            <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
+                                <input type="hidden" name="requestId" value="@request.RequestId" />
 
-                            <div class="form-group">
-                                <label for="rejectionReason">Powód odrzucenia:</label>
-                                <textarea name="rejectionReason" class="form-control" rows="3" required></textarea>
-                            </div>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="collapse" data-bs-target="#rejectionReasonCollapse_@request.RequestId">
+                                    Odrzuć
+                                </button>
 
-                            <button type="submit" class="btn btn-danger btn-sm">Odrzuć</button>
-                        </form>
+                                <!-- Pole z powodem odrzucenia, początkowo schowane -->
+                                <div id="rejectionReasonCollapse_@request.RequestId" class="collapse mt-2">
+                                    <div class="form-group">
+                                        <label for="rejectionReason">Powód odrzucenia:</label>
+                                        <textarea name="rejectionReason" class="form-control" rows="3" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-danger btn-sm mt-2">Zatwierdź Odrzucenie</button>
+                                </div>
+                            </form>
+
+                            <!-- Przycisk Usuń -->
+                            <form asp-action="DeleteRequest" asp-controller="Admin" method="post" style="display:inline;">
+                                <input type="hidden" name="requestId" value="@request.RequestId" />
+                                <button type="submit" class="btn btn-warning btn-sm ms-2">Usuń</button> <!-- Dodajemy margines po lewej -->
+                            </form>
+                        </div>
                     }
-                    <!-- Formularz do usuwania wniosków -->
-                    <form asp-action="DeleteRequest" asp-controller="Admin" method="post" style="display:inline;">
-                        <input type="hidden" name="requestId" value="@request.RequestId" />
-                        <button type="submit" class="btn btn-warning btn-sm">Usuń</button>
-                    </form>
                 </td>
             </tr>
         }

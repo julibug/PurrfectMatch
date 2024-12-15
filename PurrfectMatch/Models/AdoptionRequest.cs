@@ -10,5 +10,6 @@
         public bool Housing { get; set; }
         public string Status { get; set; } = "Oczekujący";
         public string RejectionReason { get; set; } = "";
+        public string AdoptionReason { get; set; }
     }
 }

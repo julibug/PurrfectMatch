@@ -29,5 +29,6 @@ namespace PurrfectMatch.Models
 
         public string Status { get; set; }  // Dodajemy Status
         public string RejectionReason { get; set; }
+        public string AdoptionReason { get; set; }
     }
 }

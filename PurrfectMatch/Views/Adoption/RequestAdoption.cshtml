@@ -26,11 +26,17 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Housing" class="form-label">Czy masz odpowiednie warunki mieszkaniowe?</label>
+        <label asp-for="Housing" class="form-label">Jakie masz warunki mieszkaniowe?</label>
         <select asp-for="Housing" class="form-control">
-            <option value="true">Dom</option>
-            <option value="false">Mieszkanie</option>
+            <option value="true">Mieszkam w domu</option>
+            <option value="false">Mieszkam w mieszkaniu</option>
         </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AdoptionReason" class="form-label">Dlaczego chcesz adoptować tego kota? Uzasadnij swój wniosek, napisz coś o sobie :)</label>
+        <textarea asp-for="AdoptionReason" class="form-control" rows="4" required></textarea>
+        <span asp-validation-for="AdoptionReason" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Zgłoś chęć adopcji</button>

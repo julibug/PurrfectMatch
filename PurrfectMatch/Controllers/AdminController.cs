@@ -51,7 +51,8 @@ namespace PurrfectMatch.Controllers
                     Housing = r.Housing,
                     CatId = r.CatId,
                     Status = r.Status,  // Pobierz status
-                    RejectionReason = r.RejectionReason  // Pobierz powód odrzucenia
+                    RejectionReason = r.RejectionReason,
+                    AdoptionReason = r.AdoptionReason
                 })
                 .ToListAsync();
 
