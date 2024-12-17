@@ -4,9 +4,9 @@
 
 <div class="d-flex align-items-center">
     <a href="@Url.Action("Index", new { status = "All" })" class="btn btn-primary text-white rounded-start">Pokaż wszystkie</a>
-    <div class="mx-1"></div> <!-- Separator -->
+    <div class="mx-1"></div> 
     <a href="@Url.Action("Index", new { status = "Rozpatrzone" })" class="btn btn-primary text-white">Pokaż rozpatrzone</a>
-    <div class="mx-1"></div> <!-- Separator -->
+    <div class="mx-1"></div> 
     <a href="@Url.Action("Index", new { status = "Nierozpatrzone" })" class="btn btn-primary text-white rounded-end">Pokaż nierozpatrzone</a>
 </div>
 
@@ -48,14 +48,13 @@
                     else
                     {
                         <div class="d-flex">
-                            <!-- Przycisk Akceptuj -->
+
                             <form asp-action="ApproveRequest" asp-controller="Admin" method="post" style="display:inline;">
                                 <input type="hidden" name="requestId" value="@request.RequestId" />
                                 <input type="hidden" name="catId" value="@request.CatId" />
-                                <button type="submit" class="btn btn-success btn-sm me-2">Akceptuj</button> <!-- Dodajemy margines po prawej -->
+                                <button type="submit" class="btn btn-success btn-sm me-2">Akceptuj</button> 
                             </form>
 
-                            <!-- Przycisk Odrzuć -->
                             <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
                                 <input type="hidden" name="requestId" value="@request.RequestId" />
 
@@ -63,7 +62,6 @@
                                     Odrzuć
                                 </button>
 
-                                <!-- Pole z powodem odrzucenia, początkowo schowane -->
                                 <div id="rejectionReasonCollapse_@request.RequestId" class="collapse mt-2">
                                     <div class="form-group">
                                         <label for="rejectionReason">Powód odrzucenia:</label>
@@ -73,10 +71,9 @@
                                 </div>
                             </form>
 
-                            <!-- Przycisk Usuń -->
                             <form asp-action="DeleteRequest" asp-controller="Admin" method="post" style="display:inline;">
                                 <input type="hidden" name="requestId" value="@request.RequestId" />
-                                <button type="submit" class="btn btn-warning btn-sm ms-2">Usuń</button> <!-- Dodajemy margines po lewej -->
+                                <button type="submit" class="btn btn-warning btn-sm ms-2">Usuń</button> 
                             </form>
                         </div>
                     }

@@ -23,7 +23,6 @@ namespace PurrfectMatch.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-        // Akcja dodawania kota
         [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult Create()
@@ -37,7 +36,6 @@ namespace PurrfectMatch.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Przesyłanie zdjęcia, przycinanie i zapisywanie (tak jak wcześniej)
                 if (imageFile != null && imageFile.Length > 0)
                 {
                     var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
@@ -53,10 +51,10 @@ namespace PurrfectMatch.Controllers
                         {
                             image.Mutate(x => x.Resize(new ResizeOptions
                             {
-                                Size = new Size(300, 300), // np. kwadrat 300x300
+                                Size = new Size(300, 300), 
                                 Mode = ResizeMode.Crop
                             }));
-                            image.Save(filePath); // Zapis przyciętego obrazu
+                            image.Save(filePath); 
                         }
                     }
 
@@ -100,9 +98,8 @@ namespace PurrfectMatch.Controllers
                 existingCat.Age = cat.Age;
                 existingCat.IsAvailable = cat.IsAvailable;
                 existingCat.Diseases = cat.Diseases;
-                existingCat.Gender = cat.Gender; // Ustawiamy płeć kota
+                existingCat.Gender = cat.Gender; 
 
-                // Obsługa zdjęcia, przycinanie i zapisywanie (tak jak wcześniej)
                 if (imageFile != null && imageFile.Length > 0)
                 {
                     var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
@@ -136,7 +133,6 @@ namespace PurrfectMatch.Controllers
             return View(cat);
         }
 
-        // Akcja, która wyświetla formularz potwierdzenia usunięcia kota
         [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult Delete(int id)
@@ -147,10 +143,9 @@ namespace PurrfectMatch.Controllers
                 return NotFound();
             }
 
-            return View(cat);  // Zwracamy widok, aby użytkownik mógł potwierdzić usunięcie
+            return View(cat); 
         }
 
-        // Akcja, która faktycznie usuwa kota z bazy danych
         [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -162,16 +157,15 @@ namespace PurrfectMatch.Controllers
                 return NotFound();
             }
 
-            _context.Cats.Remove(cat);  // Usuwamy kota
+            _context.Cats.Remove(cat);  
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));  // Po usunięciu przekierowujemy na stronę z listą kotów
+            return RedirectToAction(nameof(Index)); 
         }
 
-        // Akcja wyświetlająca listę kotów
         public IActionResult Index()
         {
-            var cats = _context.Cats.ToList(); // Pobieramy wszystkich kotów z bazy danych
-            return View(cats); // Zwracamy widok z listą kotów
+            var cats = _context.Cats.ToList(); 
+            return View(cats);
         }
 
         public IActionResult Details(int id)

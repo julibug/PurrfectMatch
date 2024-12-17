@@ -14,7 +14,6 @@ namespace PurrfectMatch.Controllers
         private readonly ApplicationDbContext _applicationDbContext;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        // Dodaj UserManager do konstruktora kontrolera
         public AdminController(CatDbContext catDbContext, ApplicationDbContext applicationDbContext, UserManager<ApplicationUser> userManager)
         {
             _catDbContext = catDbContext;
@@ -24,10 +23,8 @@ namespace PurrfectMatch.Controllers
 
         public async Task<IActionResult> Index(string status = "All")
         {
-            // Zacznij od zapytania do AdoptionRequests
             IQueryable<AdoptionRequest> requestsQuery = _catDbContext.AdoptionRequests;
 
-            // Filtrowanie wniosków na podstawie statusu
             if (status == "Rozpatrzone")
             {
                 requestsQuery = requestsQuery.Where(r => r.Status == "Zaakceptowany" || r.Status == "Odrzucony");
@@ -36,37 +33,33 @@ namespace PurrfectMatch.Controllers
             {
                 requestsQuery = requestsQuery.Where(r => r.Status == "Oczekujący");
             }
-            // Jeśli status = "All" (domyślnie), wtedy nie stosujemy żadnego filtra
 
-            // Pobierz wnioski z bazy danych na podstawie filtrowania
             var requests = await requestsQuery
                 .Select(r => new AdoptionRequestAdminViewModel
                 {
                     RequestId = r.Id,
                     UserId = r.UserId,
-                    UserName = "", // Przypiszemy później UserName
+                    UserName = "",
                     CatName = _catDbContext.Cats.FirstOrDefault(c => c.Id == r.CatId).Name,
                     HasOtherAnimals = r.HasOtherAnimals,
                     HasChildren = r.HasChildren,
                     Housing = r.Housing,
                     CatId = r.CatId,
-                    Status = r.Status,  // Pobierz status
+                    Status = r.Status,  
                     RejectionReason = r.RejectionReason,
                     AdoptionReason = r.AdoptionReason
                 })
                 .ToListAsync();
 
-            // Pobieramy użytkowników na podstawie UserId
             var userIds = requests.Select(r => r.UserId).Distinct().ToList();
             var users = await _userManager.Users.Where(u => userIds.Contains(u.Id)).ToListAsync();
 
-            // Przypisz UserName do wniosków adopcyjnych
             foreach (var request in requests)
             {
                 var user = users.FirstOrDefault(u => u.Id == request.UserId);
                 if (user != null)
                 {
-                    request.UserName = user.UserName;  // Przypisujemy UserName użytkownika
+                    request.UserName = user.UserName;  
                 }
             }
 
@@ -76,11 +69,9 @@ namespace PurrfectMatch.Controllers
         [HttpPost]
         public async Task<IActionResult> ApproveRequest(int requestId, int catId)
         {
-            // Pobierz wniosek adopcyjny
             var approvedRequest = await _catDbContext.AdoptionRequests
                 .FirstOrDefaultAsync(r => r.Id == requestId);
 
-            // Pobierz kota z bazy danych
             var cat = await _catDbContext.Cats.FirstOrDefaultAsync(c => c.Id == catId);
 
             if (cat == null || approvedRequest == null)
@@ -89,25 +80,20 @@ namespace PurrfectMatch.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Sprawdź, czy kot jest dostępny
             if (!cat.IsAvailable)
             {
                 TempData["ErrorMessage"] = "Kot jest już niedostępny.";
                 return RedirectToAction("Index");
             }
 
-            // Zmiana statusu zaakceptowanego wniosku
             approvedRequest.Status = "Zaakceptowany";
 
-            // Oznacz kota jako niedostępnego
             cat.IsAvailable = false;
 
-            // Pobierz inne wnioski dotyczące tego samego kota
             var otherRequests = await _catDbContext.AdoptionRequests
                 .Where(r => r.CatId == catId && r.Id != requestId && r.Status == "Oczekujący")
                 .ToListAsync();
-
-            // Odrzuć wszystkie inne wnioski
+            
             foreach (var request in otherRequests)
             {
                 request.Status = "Odrzucony";
@@ -115,11 +101,9 @@ namespace PurrfectMatch.Controllers
                 _catDbContext.AdoptionRequests.Update(request);
             }
 
-            // Zaktualizuj zaakceptowany wniosek i kota
             _catDbContext.AdoptionRequests.Update(approvedRequest);
             _catDbContext.Cats.Update(cat);
 
-            // Zapisz zmiany w bazie danych
             await _catDbContext.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Wniosek został zaakceptowany. Pozostałe wnioski zostały automatycznie odrzucone.";
@@ -138,11 +122,9 @@ namespace PurrfectMatch.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Przypisz powód odrzucenia do wniosku
             request.Status = "Odrzucony";
             request.RejectionReason = rejectionReason;
 
-            // Zaktualizuj wniosek w bazie danych
             _catDbContext.AdoptionRequests.Update(request);
             await _catDbContext.SaveChangesAsync();
 
@@ -153,7 +135,6 @@ namespace PurrfectMatch.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteRequest(int requestId)
         {
-            // Pobierz wniosek adopcyjny z bazy danych
             var request = await _catDbContext.AdoptionRequests
                 .FirstOrDefaultAsync(r => r.Id == requestId);
 
@@ -165,7 +146,6 @@ namespace PurrfectMatch.Controllers
 
             try
             {
-                // Usuń wniosek z bazy danych
                 _catDbContext.AdoptionRequests.Remove(request);
                 await _catDbContext.SaveChangesAsync();
 
@@ -179,13 +159,10 @@ namespace PurrfectMatch.Controllers
             return RedirectToAction("Index");
         }
 
-        // Akcja do wyświetlenia listy użytkowników
         public async Task<IActionResult> ManageUsers()
         {
-            // Pobierz wszystkich użytkowników
             var users = await _userManager.Users.ToListAsync();
 
-            // Filtruj użytkowników, aby wykluczyć administratorów
             var nonAdminUsers = new List<ApplicationUser>();
             foreach (var user in users)
             {
@@ -195,10 +172,9 @@ namespace PurrfectMatch.Controllers
                 }
             }
 
-            return View(nonAdminUsers); // Przekaż tylko użytkowników niebędących administratorami
+            return View(nonAdminUsers); 
         }
 
-        // Akcja edycji użytkownika (GET)
         public async Task<IActionResult> EditUser(string id)
         {
             if (id == null) return NotFound();
@@ -209,7 +185,6 @@ namespace PurrfectMatch.Controllers
             return View(user);
         }
 
-        // Akcja edycji użytkownika (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditUser(ApplicationUser model)
@@ -236,7 +211,6 @@ namespace PurrfectMatch.Controllers
             return View(model);
         }
 
-        // Akcja usunięcia użytkownika
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -245,16 +219,13 @@ namespace PurrfectMatch.Controllers
                 return NotFound();
             }
 
-            // Usuwanie powiązanych wniosków adopcyjnych
             var adoptionRequests = await _catDbContext.AdoptionRequests
                 .Where(r => r.UserId == user.Id)
                 .ToListAsync();
 
-            // Usuwamy powiązane wnioski adopcyjne
             _catDbContext.AdoptionRequests.RemoveRange(adoptionRequests);
             await _catDbContext.SaveChangesAsync();
 
-            // Usuwanie użytkownika
             var result = await _userManager.DeleteAsync(user);
             if (result.Succeeded)
             {

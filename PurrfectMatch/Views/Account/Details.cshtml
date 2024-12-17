@@ -18,7 +18,6 @@
     <strong>E-mail:</strong> @User.Identity.Name
 </p>
 
-<!-- Przycisk wylogowania -->
 <form asp-controller="Account" asp-action="Logout" method="post">
     <button type="submit" class="btn btn-danger">Wyloguj</button>
 </form>
@@ -35,7 +34,7 @@
                 <tr>
                     <th>Imię kota</th>
                     <th>Status wniosku</th>
-                    <th>Komentarz</th> <!-- Nowa kolumna -->
+                    <th>Komentarz</th> 
                 </tr>
             </thead>
             <tbody>
@@ -47,11 +46,11 @@
                         <td>
                             @if (request.Status == "Oczekujący")
                             {
-                                <span>Twój wniosek czeka na rozpatrzenie.</span> <!-- Komentarz dla oczekujących -->
+                                <span>Twój wniosek czeka na rozpatrzenie.</span> 
                             }
                             else if (request.Status == "Odrzucony" && !string.IsNullOrEmpty(request.RejectionReason))
                             {
-                                <span>@request.RejectionReason</span> <!-- Pokazujemy powód odrzucenia -->
+                                <span>@request.RejectionReason</span> 
                             }
                             else if (request.Status == "Zaakceptowany")
                             {

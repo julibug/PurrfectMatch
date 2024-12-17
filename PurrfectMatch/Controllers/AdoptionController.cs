@@ -22,37 +22,32 @@ namespace PurrfectMatch.Controllers
         [HttpGet]
         public IActionResult RequestAdoption(int catId)
         {
-            // Pobierz zalogowanego użytkownika
             var user = _userManager.GetUserAsync(User).Result;
             if (user == null)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            // Sprawdzamy, czy użytkownik już złożył wniosek o adopcję tego kota
             var existingRequest = _context.AdoptionRequests
                 .FirstOrDefault(r => r.UserId == user.Id && r.CatId == catId);
 
             if (existingRequest != null)
             {
-                // Jeśli wniosek już istnieje, przekazujemy informację do widoku
                 ViewBag.Message = "Twój wniosek został już złożony.";
-                return View("AdoptionRequestAlreadySubmitted"); // Przekierowanie do widoku
+                return View("AdoptionRequestAlreadySubmitted");
             }
 
-            // Tworzymy pusty model, aby przekazać ID kota do widoku
             var model = new AdoptionRequest
             {
-                CatId = catId // Ustawiamy ID kota, który ma być adoptowany
+                CatId = catId 
             };
 
-            return View(model); // Przekazujemy model do widoku
+            return View(model); 
         }
 
         [HttpPost]
         public async Task<IActionResult> RequestAdoption(AdoptionRequest model)
         {
-            // Pobierz zalogowanego użytkownika
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -60,18 +55,15 @@ namespace PurrfectMatch.Controllers
                 return Unauthorized();
             }
 
-            // Sprawdzamy, czy użytkownik już złożył wniosek o adopcję tego kota
             var existingRequest = await _context.AdoptionRequests
                 .FirstOrDefaultAsync(r => r.UserId == user.Id && r.CatId == model.CatId);
 
             if (existingRequest != null)
             {
-                // Jeśli wniosek już istnieje, przekazujemy informację do widoku
                 ModelState.AddModelError(string.Empty, "Twój wniosek został już złożony dla tego kota.");
-                return View(model); // Powrócimy do widoku z komunikatem
+                return View(model); 
             }
 
-            // Przypisz UserId i usuń ewentualne błędy walidacji dla tego pola
             model.UserId = user.Id;
             ModelState.Remove("UserId");
 
@@ -87,7 +79,6 @@ namespace PurrfectMatch.Controllers
 
             try
             {
-                // Dodaj model do bazy danych
                 _context.AdoptionRequests.Add(model);
                 await _context.SaveChangesAsync();
                 Console.WriteLine("Request saved successfully!");

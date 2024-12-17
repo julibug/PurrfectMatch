@@ -11,7 +11,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-group mb-3">
-        <!-- Zwiększony margines na dole -->
         @Html.LabelFor(model => model.Name)
         @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
     </div>
@@ -55,14 +54,13 @@
 }
 
 <script>
-    // Funkcja do podglądu zdjęcia
     document.getElementById('ImageFile').addEventListener('change', function (event) {
         var reader = new FileReader();
         reader.onload = function (e) {
             var imagePreview = document.getElementById('imagePreview');
             var imagePreviewContainer = document.getElementById('imagePreviewContainer');
             imagePreview.src = e.target.result;
-            imagePreviewContainer.style.display = 'block'; // Pokazuje kontener z podglądem
+            imagePreviewContainer.style.display = 'block'; 
         };
         reader.readAsDataURL(this.files[0]);
     });

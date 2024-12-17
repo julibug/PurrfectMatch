@@ -26,7 +26,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* Zawijanie elementów na ma³ych ekranach */
+    flex-wrap: wrap; 
 }
 
 .card {
@@ -35,51 +35,39 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 50px; /* Dodanie marginesu górnego do kart */
+    margin-top: 50px; 
 }
 
-/* Alternatywnie, mo¿esz dodaæ margines do .col-md-4, aby przesun¹æ ca³¹ kolumnê */
 .col-md-4 {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    margin-top: 20px; /* Dodanie marginesu górnego do kolumn */
+    margin-top: 20px; 
 }
 
-/* Stylizacja dla obrazka, aby by³ w pe³ni wyœrodkowany */
 .card img {
-    width: 150px; /* Mo¿esz dostosowaæ szerokoœæ */
-    height: 150px; /* Mo¿esz dostosowaæ wysokoœæ */
-    object-fit: cover; /* Dopasowanie obrazka do kontenera */
-    margin: 0 auto; /* Wyœrodkowanie obrazka w kolumnie */
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; 
+    margin: 0 auto; 
     margin-top: 10px;
 }
 
 img {
-    width: 300px; /* Ustaw szerokoœæ */
-    height: 300px; /* Ustaw wysokoœæ */
-    object-fit: cover; /* Zachowaj proporcje przy przycinaniu */
-    border-radius: 8px; /* Opcjonalne zaokr¹glenie rogów */
-}
-
-.btn-purple {
-    background-color: #6f42c1; /* Fioletowy kolor */
-    color: white;
-}
-
-.btn-purple:hover {
-    background-color: #5a32a3; /* Ciemniejszy fiolet na hover */
-    color: white;
+    width: 300px; 
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 8px;
 }
 
 .btn-pink {
-    background-color: #e83e8c; /* Ró¿owy kolor */
+    background-color: #e83e8c;
     color: white;
 }
 
 .btn-pink:hover {
-    background-color: #d6336c; /* Ciemniejszy ró¿ na hover */
+    background-color: #d6336c; 
     color: white;
 }
 

@@ -44,7 +44,6 @@
         @Html.ValidationMessageFor(model => model.IsAvailable)
     </div>
 
-    <!-- Sekcja dla obecnego zdjęcia -->
     <div class="form-group mb-3">
         <label for="imageFile">Zdjęcie kota</label>
         <input type="file" id="imageFile" name="imageFile" class="form-control" onchange="previewImage(event)" />
@@ -57,7 +56,6 @@
             </div>
         }
 
-        <!-- Podgląd nowego zdjęcia -->
         <div id="imagePreview" class="mt-3" style="display: none;">
             <p><strong>Podgląd nowego zdjęcia:</strong></p>
             <img id="newImagePreview" style="max-height: 200px; width: auto; display: none;" />
@@ -69,22 +67,17 @@
 
 <script>
     function previewImage(event) {
-        // Uzyskaj element obrazka do podglądu
         var reader = new FileReader();
         var imagePreview = document.getElementById("imagePreview");
         var newImagePreview = document.getElementById("newImagePreview");
 
-        // Po załadowaniu nowego zdjęcia
         reader.onload = function () {
-            // Ustaw źródło obrazu podglądu na dane z pliku
             newImagePreview.src = reader.result;
 
-            // Pokaż sekcję podglądu i obrazek
             imagePreview.style.display = "block";
             newImagePreview.style.display = "block";
         }
 
-        // Sprawdź, czy plik został wybrany
         if (event.target.files && event.target.files[0]) {
             reader.readAsDataURL(event.target.files[0]);
         }
