@@ -16,7 +16,7 @@ namespace PurrfectMatch.Models
         [Display(Name = "Wiek")]
         public int Age { get; set; }
 
-        [StringLength(500)]
+        [StringLength(1000)]
         [Display(Name = "Opis")]
         public string? Description { get; set; }
 

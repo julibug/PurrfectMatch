@@ -66,9 +66,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Zmiana domyœlnej œcie¿ki na rejestracjê
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"); // Zmieniamy domyœlny kontroler i akcjê na rejestracjê
-
+    pattern: "{controller=Home}/{action=Index}/{id?}"); 
 app.Run();
