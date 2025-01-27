@@ -90,6 +90,15 @@ namespace PurrfectMatch.Controllers
 
             cat.IsAvailable = false;
 
+            var notification = new Notification
+            {
+                UserId = approvedRequest.UserId,
+                Message = $"Twój wniosek adopcyjny dla kota {cat.Name} został rozpatrzony.",
+                CreatedAt = DateTime.UtcNow,
+                IsRead = false
+            };
+            _catDbContext.Notifications.Add(notification);
+
             var otherRequests = await _catDbContext.AdoptionRequests
                 .Where(r => r.CatId == catId && r.Id != requestId && r.Status == "Oczekujący")
                 .ToListAsync();
@@ -99,6 +108,15 @@ namespace PurrfectMatch.Controllers
                 request.Status = "Odrzucony";
                 request.RejectionReason = "Przepraszamy, ale kotek został już zarezerwowany do adopcji.";
                 _catDbContext.AdoptionRequests.Update(request);
+
+                var rejectionNotification = new Notification
+                {
+                    UserId = request.UserId,
+                    Message = $"Twój wniosek adopcyjny dla kota {cat.Name} został rozpatrzony.",
+                    CreatedAt = DateTime.UtcNow,
+                    IsRead = false
+                };
+                _catDbContext.Notifications.Add(rejectionNotification);
             }
 
             _catDbContext.AdoptionRequests.Update(approvedRequest);
@@ -124,6 +142,17 @@ namespace PurrfectMatch.Controllers
 
             request.Status = "Odrzucony";
             request.RejectionReason = rejectionReason;
+
+            // Powiadomienie dla odrzuconego wniosku
+            var cat = await _catDbContext.Cats.FirstOrDefaultAsync(c => c.Id == request.CatId);
+            var notification = new Notification
+            {
+                UserId = request.UserId,
+                Message = $"Twój wniosek adopcyjny dla kota {cat.Name} został rozpatrzony.",
+                CreatedAt = DateTime.UtcNow,
+                IsRead = false
+            };
+            _catDbContext.Notifications.Add(notification);
 
             _catDbContext.AdoptionRequests.Update(request);
             await _catDbContext.SaveChangesAsync();

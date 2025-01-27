@@ -20,6 +20,11 @@ html {
 body {
     background-color: pink;
     color: #000;
+    cursor: url('/images/cat-icon.png'), auto;
+}
+
+button, a, input, select, textarea, form {
+    cursor: inherit; /* Sprawia, ¿e przyciski, linki i formularze u¿ywaj¹ tego samego kursora */
 }
 
 .row {
@@ -70,6 +75,50 @@ img {
     background-color: #d6336c; 
     color: white;
 }
+
+.dropdown-menu {
+    width: 500px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.badge {
+    margin-left: 5px;
+    background-color: #ff69b4; /* Ró¿owy kolor t³a */
+    color: white; /* Kolor tekstu, aby by³ czytelny */
+    padding: 5px 10px; /* Trochê wewnêtrznego odstêpu */
+    border-radius: 12px; /* Zaokr¹glone rogi */
+    font-size: 0.9em; /* Opcjonalnie, dopasowanie rozmiaru tekstu */
+    font-weight: bold; /* Opcjonalnie, pogrubienie */
+}
+
+#notificationsDropdown {
+    background-color: pink !important; /* Jasnoró¿owe t³o */
+    color: black; /* Jasny tekst */
+    border: none; /* Bez obramowania */
+}
+
+/* Licznik powiadomieñ */
+#notificationCount {
+    background-color: #b03060 !important; /* Ciemnoró¿owe t³o licznika */
+    color: black; /* Bia³y tekst */
+    border-radius: 12px; /* Zaokr¹glone rogi */
+    padding: 2px 6px; /* Dystans wewnêtrzny */
+    font-size: 0.9em; /* Rozmiar tekstu */
+    margin-left: 5px; /* Odstêp od tekstu */
+}
+
 
 
 
