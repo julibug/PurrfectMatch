@@ -53,12 +53,6 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - PurrfectMatch - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -82,55 +76,56 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-document.getElementById('notificationsDropdown').addEventListener('click', async function () {
-    const notificationList = document.getElementById('notificationList');
-    notificationList.innerHTML = '<li><span class="dropdown-item">Ładowanie...</span></li>';
+    document.getElementById('notificationsDropdown').addEventListener('click', async function () {
+        const notificationList = document.getElementById('notificationList');
+        notificationList.innerHTML = '<li><span class="dropdown-item">Ładowanie...</span></li>';
 
-    try {
-        const response = await fetch('/Notification/GetNotifications');
-        const data = await response.json();
+        try {
+            const response = await fetch('/Notification/GetNotifications');
+            const data = await response.json();
 
-        if (data.length === 0) {
-            notificationList.innerHTML = '<li><span class="dropdown-item">Brak nowych powiadomień</span></li>';
-        } else {
-            notificationList.innerHTML = '';
-            data.forEach(notification => {
-                notificationList.innerHTML += `
-                    <li class="dropdown-item" id="notification-${notification.id}">
-                        <span>${notification.message}</span>
-                        <div style="font-size: 0.8em; color: gray;">${new Date(notification.createdAt).toLocaleString()}</div>
-                        <button class="btn btn-sm btn-link text-success markAsReadBtn" data-id="${notification.id}">Oznacz jako przeczytane</button>
-                    </li>
-                `;
-            });
-
-            // Zaktualizowanie przycisków oznaczania jako przeczytane
-            const markAsReadBtns = document.querySelectorAll('.markAsReadBtn');
-            markAsReadBtns.forEach(button => {
-                button.addEventListener('click', async function () {
-                    const notificationId = button.getAttribute('data-id');
-                    try {
-                        const markAsReadResponse = await fetch(`/Notification/MarkAsRead?id=${notificationId}`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded'
-                            }
-                        });
-
-                        if (markAsReadResponse.ok) {
-                            // Po oznaczeniu jako przeczytane, odśwież całą stronę
-                            location.reload(); // Odświeżenie strony
-                        } else {
-                            alert('Wystąpił problem podczas oznaczania powiadomienia.');
-                        }
-                    } catch (error) {
-                        console.error('Błąd podczas oznaczania powiadomienia:', error);
-                    }
+            if (data.length === 0) {
+                notificationList.innerHTML = '<li><span class="dropdown-item">Brak nowych powiadomień</span></li>';
+            } else {
+                notificationList.innerHTML = '';
+                data.forEach(notification => {
+                    notificationList.innerHTML += `
+                       <li class="dropdown-item" id="notification-${notification.id}">
+                            <span>${notification.message}</span>
+                            <div style="font-size: 0.8em; color: gray;">
+                                 ${new Date(notification.createdAt).toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' })}
+                            </div>
+                            <button class="btn btn-sm btn-link text-success markAsReadBtn" data-id="${notification.id}">Oznacz jako przeczytane</button>
+                        </li>
+                    `;
                 });
-            });
+
+                // Zaktualizowanie przycisków oznaczania jako przeczytane
+                const markAsReadBtns = document.querySelectorAll('.markAsReadBtn');
+                markAsReadBtns.forEach(button => {
+                    button.addEventListener('click', async function () {
+                        const notificationId = button.getAttribute('data-id');
+                        try {
+                            const markAsReadResponse = await fetch(`/Notification/MarkAsRead?id=${notificationId}`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                }
+                            });
+
+                            if (markAsReadResponse.ok) {
+                                location.reload(); // Odświeżenie strony
+                            } else {
+                                alert('Wystąpił problem podczas oznaczania powiadomienia.');
+                            }
+                        } catch (error) {
+                            console.error('Błąd podczas oznaczania powiadomienia:', error);
+                        }
+                    });
+                });
+            }
+        } catch (error) {
+            notificationList.innerHTML = '<li><span class="dropdown-item text-danger">Brak nowych powiadomień.</span></li>';
         }
-    } catch (error) {
-        notificationList.innerHTML = '<li><span class="dropdown-item text-danger">Brak nowych powiadomień.</span></li>';
-    }
-});
+    });
 </script>

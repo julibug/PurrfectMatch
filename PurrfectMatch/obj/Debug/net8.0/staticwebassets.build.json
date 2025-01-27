@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2aeuYrx1uxolJhhavEHWNVGPZC8w7nZCDvHMloTVTY8=",
+  "Hash": "JuLaYbvBB6obf1EfDGSlhYAuMjVuZ0LfVMVprkhAvSM=",
   "Source": "PurrfectMatch",
   "BasePath": "_content/PurrfectMatch",
   "Mode": "Default",
@@ -338,6 +338,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\a3c63441-472c-42cd-a5f7-8508750affbe.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\cat-icon.png",
+      "SourceId": "PurrfectMatch",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\",
+      "BasePath": "_content/PurrfectMatch",
+      "RelativePath": "images/cat-icon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cat-icon.png"
     },
     {
       "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\cut cat serhio 02-1813x1811-720x719.jpg",

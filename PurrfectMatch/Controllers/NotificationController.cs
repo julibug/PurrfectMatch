@@ -30,6 +30,12 @@ namespace PurrfectMatch.Controllers
             var notifications = await _context.Notifications
                 .Where(n => n.UserId == user.Id)  // Sprawdzanie po ID użytkownika
                 .OrderByDescending(n => n.CreatedAt)
+                .Select(n => new
+                {
+                    n.Id,
+                    n.Message,
+                    CreatedAt = n.CreatedAt.AddHours(1) // Dodanie 1 godziny do zapisanego czasu
+                })
                 .ToListAsync();
 
             return View(notifications);

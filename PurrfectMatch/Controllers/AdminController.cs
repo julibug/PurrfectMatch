@@ -113,7 +113,7 @@ namespace PurrfectMatch.Controllers
                 {
                     UserId = request.UserId,
                     Message = $"Twój wniosek adopcyjny dla kota {cat.Name} został rozpatrzony.",
-                    CreatedAt = DateTime.UtcNow,
+                    CreatedAt = DateTime.UtcNow.AddHours(1),
                     IsRead = false
                 };
                 _catDbContext.Notifications.Add(rejectionNotification);
@@ -149,7 +149,7 @@ namespace PurrfectMatch.Controllers
             {
                 UserId = request.UserId,
                 Message = $"Twój wniosek adopcyjny dla kota {cat.Name} został rozpatrzony.",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = DateTime.UtcNow.AddHours(1),
                 IsRead = false
             };
             _catDbContext.Notifications.Add(notification);
