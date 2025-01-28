@@ -10,8 +10,13 @@ namespace PurrfectMatch.Controllers
 {
     public class AccountController : Controller
     {
+        // Zarządza użytkownikami
         private readonly UserManager<ApplicationUser> _userManager;
+
+        // Zarządza procesem logowania użytkowników
         private readonly SignInManager<ApplicationUser> _signInManager;
+
+        // Kontekst bazy danych dla aplikacji, używany do obsługi adopcji kotów
         private readonly CatDbContext _catDbContext;
 
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, CatDbContext catDbContext)

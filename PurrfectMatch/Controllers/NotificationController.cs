@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace PurrfectMatch.Controllers
 {
+    // Wymaga autoryzacji, aby uzyskać dostęp do metod kontrolera
     [Authorize]
     public class NotificationController : Controller
     {
-        private readonly CatDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly CatDbContext _context; // Kontekst bazy danych
+        private readonly UserManager<ApplicationUser> _userManager; // Zarządca użytkowników
 
         public NotificationController(CatDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -19,6 +20,7 @@ namespace PurrfectMatch.Controllers
             _userManager = userManager;
         }
 
+        // Metoda do pobrania wszystkich powiadomień użytkownika
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -28,7 +30,7 @@ namespace PurrfectMatch.Controllers
             }
 
             var notifications = await _context.Notifications
-                .Where(n => n.UserId == user.Id)  // Sprawdzanie po ID użytkownika
+                .Where(n => n.UserId == user.Id)  
                 .OrderByDescending(n => n.CreatedAt)
                 .Select(n => new
                 {
@@ -41,6 +43,7 @@ namespace PurrfectMatch.Controllers
             return View(notifications);
         }
 
+        // Metoda do oznaczania powiadomienia jako przeczytanego
         [HttpPost]
         public async Task<IActionResult> MarkAsRead(int id)
         {
@@ -64,7 +67,7 @@ namespace PurrfectMatch.Controllers
                 _context.Notifications.Update(notification);
                 await _context.SaveChangesAsync();
 
-                return Ok(); // Upewnij się, że zwrócisz status OK
+                return Ok(); 
             }
             catch (Exception ex)
             {
@@ -72,11 +75,12 @@ namespace PurrfectMatch.Controllers
             }
         }
 
+        // Metoda do pobrania nieprzeczytanych powiadomień
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetNotifications()
         {
-            var user = await _userManager.GetUserAsync(User);  // Pobranie użytkownika
+            var user = await _userManager.GetUserAsync(User); 
             if (user == null)
             {
                 return Json(new { message = "Brak zalogowanego użytkownika." });
@@ -96,6 +100,7 @@ namespace PurrfectMatch.Controllers
             return Json(notifications);
         }
 
+        // Metoda do pobrania liczby nieprzeczytanych powiadomień
         [HttpGet]
         public async Task<IActionResult> GetUnreadNotificationsCount()
         {

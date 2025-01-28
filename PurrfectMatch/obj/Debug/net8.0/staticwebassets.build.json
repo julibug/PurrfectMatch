@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JuLaYbvBB6obf1EfDGSlhYAuMjVuZ0LfVMVprkhAvSM=",
+  "Hash": "zFCRHmJIFqvi/P5stAFdw4WbXR5YPCKqcxjGMvcJJzc=",
   "Source": "PurrfectMatch",
   "BasePath": "_content/PurrfectMatch",
   "Mode": "Default",
@@ -150,6 +150,25 @@
       "OriginalItemSpec": "wwwroot\\images\\3a2ea48c-bdf9-46ab-94c5-427882813301.jpg"
     },
     {
+      "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\3d514245-d72b-4c79-bccd-a757bc58bf83.jpg",
+      "SourceId": "PurrfectMatch",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\",
+      "BasePath": "_content/PurrfectMatch",
+      "RelativePath": "images/3d514245-d72b-4c79-bccd-a757bc58bf83.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\3d514245-d72b-4c79-bccd-a757bc58bf83.jpg"
+    },
+    {
       "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\4095a0cf-288d-44b9-b00d-38c8f37e0b0b.jpg",
       "SourceId": "PurrfectMatch",
       "SourceType": "Discovered",
@@ -283,6 +302,25 @@
       "OriginalItemSpec": "wwwroot\\images\\7df356fe-95da-464b-98cd-dcf4f54e4d54.jpg"
     },
     {
+      "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\805ba41c-3950-4ce4-a471-f1dac28e762c.jpg",
+      "SourceId": "PurrfectMatch",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\",
+      "BasePath": "_content/PurrfectMatch",
+      "RelativePath": "images/805ba41c-3950-4ce4-a471-f1dac28e762c.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\805ba41c-3950-4ce4-a471-f1dac28e762c.jpg"
+    },
+    {
       "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\8b8923e8-4ced-48b2-a73e-cfe166226586.jpg",
       "SourceId": "PurrfectMatch",
       "SourceType": "Discovered",
@@ -321,6 +359,25 @@
       "OriginalItemSpec": "wwwroot\\images\\90bba78d-e720-4435-b8e2-e160d0b98758.jpg"
     },
     {
+      "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\9eb7199d-7602-4fba-ba91-7d05cc4af934.webp",
+      "SourceId": "PurrfectMatch",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\",
+      "BasePath": "_content/PurrfectMatch",
+      "RelativePath": "images/9eb7199d-7602-4fba-ba91-7d05cc4af934.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\9eb7199d-7602-4fba-ba91-7d05cc4af934.webp"
+    },
+    {
       "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\a3c63441-472c-42cd-a5f7-8508750affbe.jpg",
       "SourceId": "PurrfectMatch",
       "SourceType": "Discovered",
@@ -338,6 +395,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\a3c63441-472c-42cd-a5f7-8508750affbe.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\b2cf95cd-8177-4469-ae81-5b3449cbcd09.jpg",
+      "SourceId": "PurrfectMatch",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\",
+      "BasePath": "_content/PurrfectMatch",
+      "RelativePath": "images/b2cf95cd-8177-4469-ae81-5b3449cbcd09.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\b2cf95cd-8177-4469-ae81-5b3449cbcd09.jpg"
     },
     {
       "Identity": "C:\\Users\\julia\\Documents\\GitHub\\PurrfectMatch\\PurrfectMatch\\PurrfectMatch\\wwwroot\\images\\cat-icon.png",

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PurrfectMatch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+866f472667e913f3bdfd001cb1866bea2036c214")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa7631158e7628ee3dd5697ea73364914f57a607")]
 [assembly: System.Reflection.AssemblyProductAttribute("PurrfectMatch")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PurrfectMatch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

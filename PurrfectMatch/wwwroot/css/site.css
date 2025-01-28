@@ -24,7 +24,7 @@ body {
 }
 
 button, a, input, select, textarea, form {
-    cursor: inherit; /* Sprawia, ¿e przyciski, linki i formularze u¿ywaj¹ tego samego kursora */
+    cursor: inherit; 
 }
 
 .row {
@@ -95,28 +95,27 @@ img {
 
 .badge {
     margin-left: 5px;
-    background-color: #ff69b4; /* Ró¿owy kolor t³a */
-    color: white; /* Kolor tekstu, aby by³ czytelny */
-    padding: 5px 10px; /* Trochê wewnêtrznego odstêpu */
-    border-radius: 12px; /* Zaokr¹glone rogi */
-    font-size: 0.9em; /* Opcjonalnie, dopasowanie rozmiaru tekstu */
-    font-weight: bold; /* Opcjonalnie, pogrubienie */
+    background-color: #ff69b4;
+    color: white; 
+    padding: 5px 10px; 
+    border-radius: 12px; 
+    font-size: 0.9em; 
+    font-weight: bold; 
 }
 
 #notificationsDropdown {
-    background-color: pink !important; /* Jasnoró¿owe t³o */
-    color: black; /* Jasny tekst */
-    border: none; /* Bez obramowania */
+    background-color: pink !important; 
+    color: black; 
+    border: none;
 }
 
-/* Licznik powiadomieñ */
 #notificationCount {
-    background-color: #b03060 !important; /* Ciemnoró¿owe t³o licznika */
-    color: black; /* Bia³y tekst */
-    border-radius: 12px; /* Zaokr¹glone rogi */
-    padding: 2px 6px; /* Dystans wewnêtrzny */
-    font-size: 0.9em; /* Rozmiar tekstu */
-    margin-left: 5px; /* Odstêp od tekstu */
+    background-color: #b03060 !important; 
+    color: black; 
+    border-radius: 12px; 
+    padding: 2px 6px; 
+    font-size: 0.9em; 
+    margin-left: 5px; 
 }
 
 

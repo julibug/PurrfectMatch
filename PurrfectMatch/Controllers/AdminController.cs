@@ -7,6 +7,8 @@ using PurrfectMatch.Models;
 
 namespace PurrfectMatch.Controllers
 {
+    // Kontroler do zarządzania funkcjami dostępnymi tylko dla administratora
+    [Authorize(Roles = "Administrator")]
     [Authorize(Roles = "Administrator")]
     public class AdminController : Controller
     {
@@ -21,6 +23,7 @@ namespace PurrfectMatch.Controllers
             _userManager = userManager;
         }
 
+        // GET: Wyświetla listę wniosków adopcyjnych z możliwością filtrowania według statusu
         public async Task<IActionResult> Index(string status = "All")
         {
             IQueryable<AdoptionRequest> requestsQuery = _catDbContext.AdoptionRequests;
@@ -51,6 +54,7 @@ namespace PurrfectMatch.Controllers
                 })
                 .ToListAsync();
 
+            // Pobranie i przekształcenie wniosków na modele widoku
             var userIds = requests.Select(r => r.UserId).Distinct().ToList();
             var users = await _userManager.Users.Where(u => userIds.Contains(u.Id)).ToListAsync();
 
@@ -66,6 +70,7 @@ namespace PurrfectMatch.Controllers
             return View(requests);
         }
 
+        // POST: Akceptacja wniosku adopcyjnego i odrzucenie pozostałych
         [HttpPost]
         public async Task<IActionResult> ApproveRequest(int requestId, int catId)
         {
@@ -99,6 +104,7 @@ namespace PurrfectMatch.Controllers
             };
             _catDbContext.Notifications.Add(notification);
 
+            // Odrzucenie pozostałych wniosków dla tego samego kota
             var otherRequests = await _catDbContext.AdoptionRequests
                 .Where(r => r.CatId == catId && r.Id != requestId && r.Status == "Oczekujący")
                 .ToListAsync();
@@ -128,6 +134,7 @@ namespace PurrfectMatch.Controllers
             return RedirectToAction("Index");
         }
 
+        // POST: Odrzucenie wniosku adopcyjnego z podaniem powodu
         [HttpPost]
         public async Task<IActionResult> RejectRequest(int requestId, string rejectionReason)
         {
@@ -188,6 +195,7 @@ namespace PurrfectMatch.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Wyświetlenie listy użytkowników nie będących administratorami
         public async Task<IActionResult> ManageUsers()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -240,6 +248,7 @@ namespace PurrfectMatch.Controllers
             return View(model);
         }
 
+        // GET: Usunięcie użytkownika wraz z jego wnioskami adopcyjnymi
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);

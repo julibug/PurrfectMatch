@@ -23,6 +23,7 @@ namespace PurrfectMatch.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        // GET: Wyświetla formularz dodawania nowego kota
         [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult Create()
@@ -30,6 +31,7 @@ namespace PurrfectMatch.Controllers
             return View();
         }
 
+        // POST: Obsługuje dodanie nowego kota do bazy danych
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Create(Cat cat, IFormFile imageFile)
@@ -69,6 +71,7 @@ namespace PurrfectMatch.Controllers
             return View(cat);
         }
 
+        // GET: Wyświetla formularz edycji danych kota
         [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult Edit(int id)
@@ -81,6 +84,7 @@ namespace PurrfectMatch.Controllers
             return View(cat);
         }
 
+        // POST: Obsługuje zapis zmian w danych kota
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, Cat cat, IFormFile? imageFile)
@@ -133,6 +137,7 @@ namespace PurrfectMatch.Controllers
             return View(cat);
         }
 
+        // GET: Wyświetla stronę potwierdzającą usunięcie kota
         [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult Delete(int id)
@@ -146,6 +151,7 @@ namespace PurrfectMatch.Controllers
             return View(cat); 
         }
 
+        // POST: Obsługuje usunięcie kota z bazy danych
         [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -162,12 +168,14 @@ namespace PurrfectMatch.Controllers
             return RedirectToAction(nameof(Index)); 
         }
 
+        // GET: Wyświetla listę wszystkich kotów
         public IActionResult Index()
         {
             var cats = _context.Cats.ToList(); 
             return View(cats);
         }
 
+        // GET: Wyświetla szczegóły wybranego kota
         public IActionResult Details(int id)
         {
             var cat = _context.Cats.FirstOrDefault(c => c.Id == id);
