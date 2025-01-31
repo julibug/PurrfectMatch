@@ -1,0 +1,48 @@
+﻿@model PurrfectMatch.Models.AdoptionRequest
+
+@{
+    ViewData["Title"] = "Zgłoszenie adopcji";
+}
+
+<h2>Formularz adopcyjny</h2>
+
+<form asp-action="RequestAdoption" method="post">
+    <input type="hidden" asp-for="CatId" />
+
+    <div class="form-group mb-3">
+        <label asp-for="HasOtherAnimals" class="form-label">Czy masz inne zwierzęta?</label>
+        <select asp-for="HasOtherAnimals" class="form-control">
+            <option value="" disabled selected>Wybierz opcję</option> 
+            <option value="true">Tak</option>
+            <option value="false">Nie</option>
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="HasChildren" class="form-label">Czy masz dzieci?</label>
+        <select asp-for="HasChildren" class="form-control">
+            <option value="" disabled selected>Wybierz opcję</option> 
+            <option value="true">Tak</option>
+            <option value="false">Nie</option>
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Housing" class="form-label">Jakie masz warunki mieszkaniowe?</label>
+        <select asp-for="Housing" class="form-control">
+            <option value="" disabled selected>Wybierz opcję</option> 
+            <option value="true">Mieszkam w domu</option>
+            <option value="false">Mieszkam w mieszkaniu</option>
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="AdoptionReason" class="form-label">Dlaczego chcesz adoptować tego kota? Uzasadnij swój wniosek, napisz coś o sobie :)</label>
+        <textarea asp-for="AdoptionReason" class="form-control" rows="4" required></textarea>
+        <span asp-validation-for="AdoptionReason" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Zgłoś chęć adopcji</button>
+    </div>
+</form>

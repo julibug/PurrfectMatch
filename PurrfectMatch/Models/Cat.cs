@@ -1,14 +1,39 @@
-﻿namespace PurrfectMatch.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PurrfectMatch.Models
 {
     public class Cat
     {
-        public int Id { get; set; } // Identyfikator kota
-        public string Name { get; set; } // Imię kota
-        public int Age { get; set; } // Wiek kota
-        public string Gender { get; set; } // Płeć kota
-        public string Description { get; set; } // Opis kota 
-        public string ImageUrl { get; set; } // Ścieżka do zdjęcia kota
-        public bool IsReserved { get; set; } // Czy kot jest zarezerwowany do adopcji
-        public string Diseases { get; set; } // Choroby kota 
+        public int Id { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Imię")]
+        public string Name { get; set; }
+
+        [Required]
+        [Range(0, 20, ErrorMessage = "Wiek musi być pomiędzy 0 a 20 lat.")]
+        [Display(Name = "Wiek")]
+        public int Age { get; set; }
+
+        [StringLength(1000)]
+        [Display(Name = "Opis")]
+        public string? Description { get; set; }
+
+        [StringLength(255)]
+        [Display(Name = "Zdjęcie")]
+        public string? ImageUrl { get; set; }
+
+        [StringLength(500)]
+        [Display(Name = "Choroby")]
+        public string? Diseases { get; set; }
+
+        [Required]
+        [Display(Name = "Dostępność")]
+        public bool IsAvailable { get; set; }
+
+        [Required]
+        [Display(Name = "Płeć")]
+        public string Gender { get; set; }
     }
 }

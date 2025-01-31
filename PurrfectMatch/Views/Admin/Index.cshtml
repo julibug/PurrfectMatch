@@ -1,0 +1,102 @@
+﻿@model IEnumerable<PurrfectMatch.Models.AdoptionRequestAdminViewModel>
+
+<h2 class="mb-4">Lista wniosków adopcyjnych</h2>
+
+<div class="d-flex align-items-center">
+    <a href="@Url.Action("Index", new { status = "All" })" class="btn btn-primary text-white rounded-start">Pokaż wszystkie</a>
+    <div class="mx-1"></div> 
+    <a href="@Url.Action("Index", new { status = "Rozpatrzone" })" class="btn btn-primary text-white">Pokaż rozpatrzone</a>
+    <div class="mx-1"></div> 
+    <a href="@Url.Action("Index", new { status = "Nierozpatrzone" })" class="btn btn-primary text-white rounded-end">Pokaż nierozpatrzone</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Użytkownik</th>
+            <th>Kot</th>
+            <th>Czy ma inne zwierzęta</th>
+            <th>Czy ma dzieci</th>
+            <th>Typ mieszkania</th>
+            <th>Uzasadnienie adopcji</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.RequestId</td>
+                <td>@request.UserName</td>
+                <td>@request.CatName</td>
+                <td>@(request.HasOtherAnimals.HasValue ? (request.HasOtherAnimals.Value ? "Tak" : "Nie") : "Brak danych")</td>
+                <td>@(request.HasChildren.HasValue ? (request.HasChildren.Value ? "Tak" : "Nie") : "Brak danych")</td>
+                <td>@(request.Housing.HasValue ? (request.Housing.Value ? "Dom" : "Mieszkanie") : "Brak danych")</td>
+
+                <td>@request.AdoptionReason</td>
+                <td>
+                    @if (request.Status == "Zaakceptowany" || request.Status == "Odrzucony")
+                    {
+                        <span class="badge bg-secondary">Wniosek rozpatrzony</span>
+
+                        @if (request.Status == "Odrzucony" && !string.IsNullOrEmpty(request.RejectionReason))
+                        {
+                            <div><strong>Powód odrzucenia:</strong> @request.RejectionReason</div>
+                        }
+                        <form asp-action="DeleteRequest" asp-controller="Admin" method="post" class="mt-3" style="display:inline;">
+                            <input type="hidden" name="requestId" value="@request.RequestId" />
+                            <button type="submit" class="btn btn-danger btn-sm ms-3 mt-2">Usuń</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="d-flex">
+
+                            <form asp-action="ApproveRequest" asp-controller="Admin" method="post" style="display:inline;">
+                                <input type="hidden" name="requestId" value="@request.RequestId" />
+                                <input type="hidden" name="catId" value="@request.CatId" />
+                                <button type="submit" class="btn btn-success btn-sm me-2">Akceptuj</button> 
+                            </form>
+
+                            <form asp-action="RejectRequest" asp-controller="Admin" method="post" style="display:inline;">
+                                <input type="hidden" name="requestId" value="@request.RequestId" />
+
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="collapse" data-bs-target="#rejectionReasonCollapse_@request.RequestId">
+                                    Odrzuć
+                                </button>
+
+                                <div id="rejectionReasonCollapse_@request.RequestId" class="collapse mt-2">
+                                    <div class="form-group">
+                                        <label for="rejectionReason">Powód odrzucenia:</label>
+                                        <textarea name="rejectionReason" class="form-control" rows="3" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-danger btn-sm mt-2">Zatwierdź Odrzucenie</button>
+                                </div>
+                            </form>
+
+                            <form asp-action="DeleteRequest" asp-controller="Admin" method="post" style="display:inline;">
+                                <input type="hidden" name="requestId" value="@request.RequestId" />
+                                <button type="submit" class="btn btn-warning btn-sm ms-2">Usuń</button> 
+                            </form>
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}

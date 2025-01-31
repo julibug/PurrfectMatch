@@ -1,0 +1,72 @@
+﻿@model List<PurrfectMatch.Models.UserAdoptionRequestViewModel>
+
+@using Microsoft.AspNetCore.Identity
+@using PurrfectMatch.Models
+
+@{
+    var userManager = Context.RequestServices.GetService<UserManager<ApplicationUser>>();
+    var signInManager = Context.RequestServices.GetService<SignInManager<ApplicationUser>>();
+}
+
+<h2 class="mb-4">Witaj, @User.Identity.Name</h2>
+
+<p>
+    <strong>Nazwa użytkownika:</strong> @User.Identity.Name
+</p>
+
+<p>
+    <strong>E-mail:</strong> @User.Identity.Name
+</p>
+
+<form asp-controller="Account" asp-action="Logout" method="post">
+    <button type="submit" class="btn btn-danger">Wyloguj</button>
+</form>
+
+<div style="margin-top: 30px;">
+@if (!User.IsInRole("Administrator"))
+{
+    <h3>Wnioski adopcyjne</h3>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Imię kota</th>
+                    <th>Status wniosku</th>
+                    <th>Komentarz</th> 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model)
+                {
+                    <tr>
+                        <td>@request.CatName</td>
+                        <td>@request.Status</td>
+                        <td>
+                            @if (request.Status == "Oczekujący")
+                            {
+                                <span>Twój wniosek czeka na rozpatrzenie.</span> 
+                            }
+                            else if (request.Status == "Odrzucony" && !string.IsNullOrEmpty(request.RejectionReason))
+                            {
+                                <span>@request.RejectionReason</span> 
+                            }
+                            else if (request.Status == "Zaakceptowany")
+                            {
+                                <span>Gratulacje! Twój wniosek został przyjęty! Niedługo skontaktujemy się z tobą mailowo.</span> <!-- Jeśli nie ma powodu odrzucenia -->
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Nie złożono jeszcze żadnych wniosków adopcyjnych.</p>
+    }
+}
+</div>
+
+

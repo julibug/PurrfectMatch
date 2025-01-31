@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PurrfectMatch.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Manage Users";
+}
+
+<h2>Lista użytkowników</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>E-mail</th>
+            <th>Nazwa użytkownika</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.UserName</td>
+                <td>
+                    <a href="@Url.Action("EditUser", "Admin", new { id = user.Id })" class="btn btn-warning">Edytuj</a>
+                    <a href="@Url.Action("DeleteUser", "Admin", new { id = user.Id })" class="btn btn-danger" onclick="return confirm('Chcesz usunąć tego użytkownika?');">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

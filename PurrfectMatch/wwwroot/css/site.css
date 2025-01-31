@@ -18,5 +18,106 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: pink;
+    color: #000;
+    cursor: url('/images/cat-icon.png'), auto;
 }
+
+button, a, input, select, textarea, form {
+    cursor: inherit; 
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px; 
+}
+
+.col-md-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px; 
+}
+
+.card img {
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; 
+    margin: 0 auto; 
+    margin-top: 10px;
+}
+
+img {
+    width: 300px; 
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 8px;
+}
+
+.btn-pink {
+    background-color: #e83e8c;
+    color: white;
+}
+
+.btn-pink:hover {
+    background-color: #d6336c; 
+    color: white;
+}
+
+.dropdown-menu {
+    width: 500px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.badge {
+    margin-left: 5px;
+    background-color: #ff69b4;
+    color: white; 
+    padding: 5px 10px; 
+    border-radius: 12px; 
+    font-size: 0.9em; 
+    font-weight: bold; 
+}
+
+#notificationsDropdown {
+    background-color: pink !important; 
+    color: black; 
+    border: none;
+}
+
+#notificationCount {
+    background-color: #b03060 !important; 
+    color: black; 
+    border-radius: 12px; 
+    padding: 2px 6px; 
+    font-size: 0.9em; 
+    margin-left: 5px; 
+}
+
+
+
+

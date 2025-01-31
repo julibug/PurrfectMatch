@@ -1,0 +1,50 @@
+﻿@model List<PurrfectMatch.Models.UserAdoptionRequestViewModel>
+
+@using Microsoft.AspNetCore.Identity
+@using PurrfectMatch.Models
+
+@{
+    var userManager = Context.RequestServices.GetService<UserManager<ApplicationUser>>();
+    var signInManager = Context.RequestServices.GetService<SignInManager<ApplicationUser>>();
+}
+
+<h2>Witaj, @User.Identity.Name</h2>
+
+<p>
+    <strong>Username:</strong> @User.Identity.Name
+</p>
+
+<p>
+    <strong>Email:</strong> @User.Identity.Name
+</p>
+
+<form asp-controller="Account" asp-action="Logout" method="post">
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+
+<h3>Wnioski adopcyjne</h3>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imię kota</th>
+                <th>Status wniosku</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.CatName</td>
+                    <td>@request.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nie złożono jeszcze żadnych wniosków adopcyjnych.</p>
+}

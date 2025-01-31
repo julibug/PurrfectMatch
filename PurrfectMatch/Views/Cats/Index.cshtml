@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PurrfectMatch.Models.Cat>
+
+@{
+    ViewBag.Title = "Lista kotów";
+}
+
+<h2 class="mb-4">Lista kotów</h2>
+
+@if (User.IsInRole("Administrator"))
+{
+    <div class="mb-2">
+        <a href="@Url.Action("Create", "Cats")" class="btn btn-pink">Dodaj nowego kota</a>
+    </div>
+    <div class="mb-1">
+        <a href="@Url.Action("Index", "Admin")" class="btn btn-pink">Przeglądaj wnioski adopcyjne</a>
+    </div>
+}
+
+<div class="container">
+    @foreach (var cat in Model)
+    {
+        <div class="row mb-4 align-items-center border-bottom pb-3">
+            <div class="col-md-4 text-center">
+                <img src="@cat.ImageUrl"
+                     class="img-fluid rounded"
+                     alt="@cat.Name"
+                     style="max-height: 200px; object-fit: cover; width: 100%; height: 200px;" />
+            </div>
+
+            <div class="col-md-8">
+                <h4>@cat.Name</h4>
+                <p>@cat.Description</p>
+                <p>
+                    <strong>Status:</strong>
+                    <span class="badge @(cat.IsAvailable ? "bg-success" : "bg-danger")">
+                        @(cat.IsAvailable ? "Dostępny" : "Niedostępny")
+                    </span>
+                </p>
+                <div class="btn-group" role="group">
+                    <a href="@Url.Action("Details", "Cats", new { id = cat.Id })" class="btn btn-primary me-2 rounded">Zobacz szczegóły</a>
+
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <a href="@Url.Action("Edit", "Cats", new { id = cat.Id })" class="btn btn-warning me-2 rounded">Edytuj</a>
+                        <a href="@Url.Action("Delete", "Cats", new { id = cat.Id })" class="btn btn-danger rounded">Usuń</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

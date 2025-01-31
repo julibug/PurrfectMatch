@@ -1,0 +1,27 @@
+﻿@model PurrfectMatch.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Edit User";
+}
+
+<h2 class="mb-4">Edytuj użytkownika</h2>
+
+@using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.UserName, "Nazwa użytkownika")
+        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserName)
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.Email, "E-mail")
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-1">Zapisz</button>
+}
