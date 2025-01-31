@@ -352,3 +352,7 @@ C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch\PurrfectMatch\bin\De
 C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch\PurrfectMatch\bin\Debug\net8.0\SixLabors.ImageSharp.dll
 C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch\PurrfectMatch\bin\Debug\net8.0\SixLabors.ImageSharp.Web.dll
 C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch\PurrfectMatch\obj\Debug\net8.0\PurrfectMatch.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch\obj\Debug\net8.0\PurrfectMatch.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch\bin\Debug\net8.0\SixLabors.ImageSharp.dll
+C:\Users\julia\Documents\GitHub\PurrfectMatch\PurrfectMatch\bin\Debug\net8.0\SixLabors.ImageSharp.Web.dll
